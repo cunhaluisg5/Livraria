@@ -30,8 +30,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        JMenuCadastros = new javax.swing.JMenu();
+        JMenuItemClientes = new javax.swing.JMenuItem();
+        JMenuItemLivros = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        JMenuItemSair = new javax.swing.JMenuItem();
+        JMenuOpcoes = new javax.swing.JMenu();
+        JMenuItemEstoque = new javax.swing.JMenuItem();
+        JMenuConsultas = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Controle da Livraria Livro Aberto");
@@ -47,11 +53,29 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        JMenuCadastros.setText("Cadastros");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        JMenuItemClientes.setText("Clientes");
+        JMenuCadastros.add(JMenuItemClientes);
+
+        JMenuItemLivros.setText("Livros");
+        JMenuCadastros.add(JMenuItemLivros);
+        JMenuCadastros.add(jSeparator1);
+
+        JMenuItemSair.setText("Sair");
+        JMenuCadastros.add(JMenuItemSair);
+
+        JMenuOpcoes.setText("Opções");
+
+        JMenuItemEstoque.setText("Estoque");
+        JMenuOpcoes.add(JMenuItemEstoque);
+
+        JMenuCadastros.add(JMenuOpcoes);
+
+        jMenuBar1.add(JMenuCadastros);
+
+        JMenuConsultas.setText("Consultas");
+        jMenuBar1.add(JMenuConsultas);
 
         setJMenuBar(jMenuBar1);
 
@@ -95,10 +119,16 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu JMenuCadastros;
+    private javax.swing.JMenu JMenuConsultas;
+    private javax.swing.JMenuItem JMenuItemClientes;
+    private javax.swing.JMenuItem JMenuItemEstoque;
+    private javax.swing.JMenuItem JMenuItemLivros;
+    private javax.swing.JMenuItem JMenuItemSair;
+    private javax.swing.JMenu JMenuOpcoes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
