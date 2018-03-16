@@ -31,13 +31,24 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenuCadastros = new javax.swing.JMenu();
-        JMenuItemClientes = new javax.swing.JMenuItem();
-        JMenuItemLivros = new javax.swing.JMenuItem();
+        JMenuItemCliente = new javax.swing.JMenuItem();
+        JMenuItemProduto = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         JMenuItemSair = new javax.swing.JMenuItem();
-        JMenuOpcoes = new javax.swing.JMenu();
-        JMenuItemEstoque = new javax.swing.JMenuItem();
         JMenuConsultas = new javax.swing.JMenu();
+        JMenuItemClientes = new javax.swing.JMenuItem();
+        JMenuItemProdutos = new javax.swing.JMenuItem();
+        JMenuCompras = new javax.swing.JMenu();
+        JMenuItemDia = new javax.swing.JMenuItem();
+        JMenuItemMes = new javax.swing.JMenuItem();
+        JMenuItemAno = new javax.swing.JMenuItem();
+        JMenuVendas = new javax.swing.JMenu();
+        JMenuItemNovaVenda = new javax.swing.JMenuItem();
+        JMenuItemEmitirNF = new javax.swing.JMenuItem();
+        JMenuSuporte = new javax.swing.JMenu();
+        JMenuItemAjuda = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        JMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Controle da Livraria Livro Aberto");
@@ -61,27 +72,75 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         JMenuCadastros.setText("Cadastros");
 
-        JMenuItemClientes.setText("Clientes");
-        JMenuCadastros.add(JMenuItemClientes);
+        JMenuItemCliente.setText("Cliente");
+        JMenuItemCliente.setName("JMenuItemCliente"); // NOI18N
+        JMenuCadastros.add(JMenuItemCliente);
 
-        JMenuItemLivros.setText("Livros");
-        JMenuCadastros.add(JMenuItemLivros);
+        JMenuItemProduto.setText("Produto");
+        JMenuItemProduto.setName("JMenuItemProduto"); // NOI18N
+        JMenuCadastros.add(JMenuItemProduto);
         JMenuCadastros.add(jSeparator1);
 
         JMenuItemSair.setText("Sair");
         JMenuCadastros.add(JMenuItemSair);
 
-        JMenuOpcoes.setText("Opções");
-
-        JMenuItemEstoque.setText("Estoque");
-        JMenuOpcoes.add(JMenuItemEstoque);
-
-        JMenuCadastros.add(JMenuOpcoes);
-
         jMenuBar1.add(JMenuCadastros);
 
         JMenuConsultas.setText("Consultas");
+
+        JMenuItemClientes.setText("Clientes");
+        JMenuItemClientes.setName("JMenuItemClientes"); // NOI18N
+        JMenuConsultas.add(JMenuItemClientes);
+
+        JMenuItemProdutos.setText("Produtos");
+        JMenuItemProdutos.setName("JMenuItemProdutos"); // NOI18N
+        JMenuConsultas.add(JMenuItemProdutos);
+
+        JMenuCompras.setText("Compras");
+        JMenuCompras.setName("JMenuCompras"); // NOI18N
+
+        JMenuItemDia.setText("Dia");
+        JMenuItemDia.setName("JMenuItemDia"); // NOI18N
+        JMenuCompras.add(JMenuItemDia);
+
+        JMenuItemMes.setText("Mês");
+        JMenuItemMes.setName("JMenuItemMes"); // NOI18N
+        JMenuCompras.add(JMenuItemMes);
+
+        JMenuItemAno.setText("Ano");
+        JMenuItemAno.setName("JMenuItemAno"); // NOI18N
+        JMenuCompras.add(JMenuItemAno);
+
+        JMenuConsultas.add(JMenuCompras);
+
         jMenuBar1.add(JMenuConsultas);
+
+        JMenuVendas.setText("Vendas");
+        JMenuVendas.setName("JMenuVendas"); // NOI18N
+
+        JMenuItemNovaVenda.setText("Nova Venda");
+        JMenuItemNovaVenda.setName("JMenuItemNovaVenda"); // NOI18N
+        JMenuVendas.add(JMenuItemNovaVenda);
+
+        JMenuItemEmitirNF.setText("Emitir N.F.");
+        JMenuItemEmitirNF.setName("JMenuItemEmitirNF"); // NOI18N
+        JMenuVendas.add(JMenuItemEmitirNF);
+
+        jMenuBar1.add(JMenuVendas);
+
+        JMenuSuporte.setText("Suporte");
+        JMenuSuporte.setName("JMenuSuporte"); // NOI18N
+
+        JMenuItemAjuda.setText("Ajuda");
+        JMenuItemAjuda.setName("JMenuItemAjuda"); // NOI18N
+        JMenuSuporte.add(JMenuItemAjuda);
+        JMenuSuporte.add(jSeparator2);
+
+        JMenuItemSobre.setText("Sobre");
+        JMenuItemSobre.setName("JMenuItemSobre"); // NOI18N
+        JMenuSuporte.add(JMenuItemSobre);
+
+        jMenuBar1.add(JMenuSuporte);
 
         setJMenuBar(jMenuBar1);
 
@@ -130,15 +189,26 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenuCadastros;
+    private javax.swing.JMenu JMenuCompras;
     private javax.swing.JMenu JMenuConsultas;
+    private javax.swing.JMenuItem JMenuItemAjuda;
+    private javax.swing.JMenuItem JMenuItemAno;
+    private javax.swing.JMenuItem JMenuItemCliente;
     private javax.swing.JMenuItem JMenuItemClientes;
-    private javax.swing.JMenuItem JMenuItemEstoque;
-    private javax.swing.JMenuItem JMenuItemLivros;
+    private javax.swing.JMenuItem JMenuItemDia;
+    private javax.swing.JMenuItem JMenuItemEmitirNF;
+    private javax.swing.JMenuItem JMenuItemMes;
+    private javax.swing.JMenuItem JMenuItemNovaVenda;
+    private javax.swing.JMenuItem JMenuItemProduto;
+    private javax.swing.JMenuItem JMenuItemProdutos;
     private javax.swing.JMenuItem JMenuItemSair;
-    private javax.swing.JMenu JMenuOpcoes;
+    private javax.swing.JMenuItem JMenuItemSobre;
+    private javax.swing.JMenu JMenuSuporte;
+    private javax.swing.JMenu JMenuVendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

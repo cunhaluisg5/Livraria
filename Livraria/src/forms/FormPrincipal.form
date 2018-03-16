@@ -9,14 +9,16 @@
             <Property name="text" type="java.lang.String" value="Cadastros"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemClientes">
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Clientes"/>
+                <Property name="text" type="java.lang.String" value="Cliente"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemCliente" noResource="true"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemLivros">
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemProduto">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Livros"/>
+                <Property name="text" type="java.lang.String" value="Produto"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemProduto" noResource="true"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
@@ -26,24 +28,94 @@
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="JMenuOpcoes">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Op&#xe7;&#xf5;es"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="JMenuItemEstoque">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estoque"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="JMenuConsultas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemClientes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clientes"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemClientes" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemProdutos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Produtos"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemProdutos" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="JMenuCompras">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Compras"/>
+                <Property name="name" type="java.lang.String" value="JMenuCompras" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="JMenuItemDia">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Dia"/>
+                    <Property name="name" type="java.lang.String" value="JMenuItemDia" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JMenuItemMes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="M&#xea;s"/>
+                    <Property name="name" type="java.lang.String" value="JMenuItemMes" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JMenuItemAno">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ano"/>
+                    <Property name="name" type="java.lang.String" value="JMenuItemAno" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="JMenuVendas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vendas"/>
+            <Property name="name" type="java.lang.String" value="JMenuVendas" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemNovaVenda">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nova Venda"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemNovaVenda" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemEmitirNF">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Emitir N.F."/>
+                <Property name="name" type="java.lang.String" value="JMenuItemEmitirNF" noResource="true"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="JMenuSuporte">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Suporte"/>
+            <Property name="name" type="java.lang.String" value="JMenuSuporte" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemAjuda">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ajuda"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemAjuda" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemSobre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sobre"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemSobre" noResource="true"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
