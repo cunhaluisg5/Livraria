@@ -5,6 +5,7 @@
  */
 package forms;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
@@ -81,6 +82,11 @@ public class FormLogin extends javax.swing.JFrame {
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_spam.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,6 +151,10 @@ public class FormLogin extends javax.swing.JFrame {
         pfSenha.setText("");
         tfMatricula.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     /**
      * @param args the command line arguments
