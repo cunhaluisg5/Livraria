@@ -135,14 +135,18 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessarActionPerformed
-        usuario = new Usuario();
-        boolean matricula, senha;
-        matricula = usuario.validarMatricula(tfMatricula.getText());
-        senha = usuario.validarSenha(pfSenha.getText());
-        if(matricula && senha){
-            JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+        if((!tfMatricula.getText().isEmpty() && tfMatricula.getText().trim() != null) && (!pfSenha.getText().isEmpty() && pfSenha.getText().trim() != null)){
+            usuario = new Usuario();
+            boolean matricula, senha;
+            matricula = usuario.validarMatricula(tfMatricula.getText());
+            senha = usuario.validarSenha(pfSenha.getText());
+            if(matricula && senha){
+                JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Preencha os dados primeiro!", "Informações de Login", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btAcessarActionPerformed
 
