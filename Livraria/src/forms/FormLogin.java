@@ -28,6 +28,13 @@ public class FormLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lbMatricula = new javax.swing.JLabel();
+        tfMatricula = new javax.swing.JTextField();
+        lbSenha = new javax.swing.JLabel();
+        pfSenha = new javax.swing.JPasswordField();
+        btAcessar = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login do Sistema");
@@ -36,20 +43,76 @@ public class FormLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        lbMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbMatricula.setText("Digite sua Matrícula:");
+        lbMatricula.setName("lbMatricula"); // NOI18N
+
+        tfMatricula.setName("tfMatricula"); // NOI18N
+
+        lbSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbSenha.setText("Senha:");
+        lbSenha.setName("lbSenha"); // NOI18N
+
+        pfSenha.setName("pfSenha"); // NOI18N
+
+        btAcessar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_not-spam.png"))); // NOI18N
+        btAcessar.setText("Acessar");
+        btAcessar.setName("btAcessar"); // NOI18N
+
+        btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_refresh.png"))); // NOI18N
+        btCancelar.setText("Cancelar");
+        btCancelar.setName("btCancelar"); // NOI18N
+
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_spam.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setName("btSair"); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbMatricula)
+                    .addComponent(lbSenha)
+                    .addComponent(pfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(tfMatricula))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(btAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btCancelar)
+                .addGap(18, 18, 18)
+                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(lbMatricula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btAcessar)
+                    .addComponent(btCancelar)
+                    .addComponent(btSair))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(568, 338));
+        setSize(new java.awt.Dimension(469, 280));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -89,6 +152,13 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAcessar;
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbMatricula;
+    private javax.swing.JLabel lbSenha;
+    private javax.swing.JPasswordField pfSenha;
+    private javax.swing.JTextField tfMatricula;
     // End of variables declaration//GEN-END:variables
 }
