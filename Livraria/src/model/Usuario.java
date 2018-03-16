@@ -44,5 +44,24 @@ public class Usuario {
         this.senha = senha;
     }
     
+    public boolean validarSenha(String senha){
+        if(senha.length() == 5 && !senha.isEmpty()){
+            return true;
+        }
+        return false;
+    }
     
+    public boolean validarMatricula(String matricula){
+        if(matricula.length() == 6){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean efetuarOLogin(String matricula, String senha){
+        if(matricula.equals(this.matricula) && senha.equals(this.senha)){
+            return true;
+        }
+        return false;
+    }
 }
