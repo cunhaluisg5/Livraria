@@ -71,6 +71,11 @@ public class FormLogin extends javax.swing.JFrame {
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_refresh.png"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.setName("btCancelar"); // NOI18N
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_spam.png"))); // NOI18N
@@ -134,6 +139,12 @@ public class FormLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btAcessarActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        tfMatricula.setText("");
+        pfSenha.setText("");
+        tfMatricula.requestFocus();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
      * @param args the command line arguments

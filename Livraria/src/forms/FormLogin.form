@@ -144,6 +144,9 @@
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="name" type="java.lang.String" value="btCancelar" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btSair">
           <Properties>
