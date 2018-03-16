@@ -59,11 +59,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="47" max="32767" attributes="0"/>
                   <Component id="btAcessar" min="-2" pref="109" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btCancelar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btSair" min="-2" pref="109" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -129,6 +129,9 @@
             <Property name="text" type="java.lang.String" value="Acessar"/>
             <Property name="name" type="java.lang.String" value="btAcessar" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAcessarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btCancelar">
           <Properties>

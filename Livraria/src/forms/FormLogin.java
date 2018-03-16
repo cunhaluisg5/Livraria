@@ -5,15 +5,17 @@
  */
 package forms;
 
+import javax.swing.JOptionPane;
+import model.Usuario;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormLogin
-     */
+    Usuario usuario;
+    
     public FormLogin() {
         initComponents();
     }
@@ -59,6 +61,11 @@ public class FormLogin extends javax.swing.JFrame {
         btAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_not-spam.png"))); // NOI18N
         btAcessar.setText("Acessar");
         btAcessar.setName("btAcessar"); // NOI18N
+        btAcessar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAcessarActionPerformed(evt);
+            }
+        });
 
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/stock_refresh.png"))); // NOI18N
@@ -85,11 +92,11 @@ public class FormLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(btAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btCancelar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGap(53, 53, 53))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +122,18 @@ public class FormLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(469, 280));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessarActionPerformed
+        usuario = new Usuario();
+        boolean matricula, senha;
+        matricula = usuario.validarMatricula(tfMatricula.getText());
+        senha = usuario.validarSenha(pfSenha.getText());
+        if(matricula && senha){
+            JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btAcessarActionPerformed
 
     /**
      * @param args the command line arguments
