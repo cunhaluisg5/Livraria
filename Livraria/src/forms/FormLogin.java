@@ -5,7 +5,6 @@
  */
 package forms;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
@@ -50,12 +49,14 @@ public class FormLogin extends javax.swing.JFrame {
         lbMatricula.setText("Digite sua Matrícula:");
         lbMatricula.setName("lbMatricula"); // NOI18N
 
+        tfMatricula.setToolTipText("Digite uma matrícula de 6 dígitos");
         tfMatricula.setName("tfMatricula"); // NOI18N
 
         lbSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbSenha.setText("Senha:");
         lbSenha.setName("lbSenha"); // NOI18N
 
+        pfSenha.setToolTipText("Digite uma senha de 5 dígitos");
         pfSenha.setName("pfSenha"); // NOI18N
 
         btAcessar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -135,18 +136,17 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessarActionPerformed
-        if((!tfMatricula.getText().isEmpty() && tfMatricula.getText().trim() != null) && (!pfSenha.getText().isEmpty() && pfSenha.getText().trim() != null)){
-            usuario = new Usuario();
-            boolean matricula, senha;
-            matricula = usuario.validarMatricula(tfMatricula.getText());
-            senha = usuario.validarSenha(pfSenha.getText());
-            if(matricula && senha){
+        usuario = new Usuario();
+        if(usuario.validarMatricula(tfMatricula.getText()) && usuario.validarSenha(pfSenha.getText())){            
+            boolean recebe;
+            recebe = usuario.efetuarOLogin(tfMatricula.getText(), pfSenha.getText());
+            if(recebe){
                 JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
             }else{
-                JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.WARNING_MESSAGE);
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Preencha os dados primeiro!", "Informações de Login", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Preencha os Dados Corretamente!", "Informações de Login", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btAcessarActionPerformed
 

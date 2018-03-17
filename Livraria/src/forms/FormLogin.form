@@ -101,6 +101,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfMatricula">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Digite uma matr&#xed;cula de 6 d&#xed;gitos"/>
             <Property name="name" type="java.lang.String" value="tfMatricula" noResource="true"/>
           </Properties>
         </Component>
@@ -115,6 +116,7 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="pfSenha">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Digite uma senha de 5 d&#xed;gitos"/>
             <Property name="name" type="java.lang.String" value="pfSenha" noResource="true"/>
           </Properties>
         </Component>
