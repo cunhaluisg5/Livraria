@@ -48,20 +48,26 @@ public class Usuario {
         if(senha.length() == 5 && !senha.isEmpty()){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
     
     public boolean validarMatricula(String matricula){
         if(matricula.length() == 6){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
     
     public boolean efetuarOLogin(String matricula, String senha){
-        if(matricula.equals(this.matricula) && senha.equals(this.senha)){
+        if(matricula.toUpperCase().equals(this.matricula.toUpperCase()) && senha.toUpperCase().equals(this.senha.toUpperCase())){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
 }

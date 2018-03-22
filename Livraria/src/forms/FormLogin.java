@@ -14,7 +14,7 @@ import model.Usuario;
  */
 public class FormLogin extends javax.swing.JFrame {
 
-    Usuario usuario;
+    Usuario user;
     
     public FormLogin() {
         initComponents();
@@ -136,17 +136,25 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessarActionPerformed
-        usuario = new Usuario();
-        if(usuario.validarMatricula(tfMatricula.getText()) && usuario.validarSenha(pfSenha.getText())){            
-            boolean recebe;
-            recebe = usuario.efetuarOLogin(tfMatricula.getText(), pfSenha.getText());
-            if(recebe){
-                JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso!", "Informações de Login", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null, "Login está Incorreto!", "Informações de Login", JOptionPane.WARNING_MESSAGE);
+        user = new Usuario();
+        String mat = tfMatricula.getText();
+        String pass = pfSenha.getText();
+        if(mat.isEmpty() || pass.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Favor preencher todos os dados!", "Problema Encontrado", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            if(user.validarMatricula(mat) && user.validarSenha(pass)){
+                if(user.efetuarOLogin(mat, pass)){
+                    new FormPrincipal().setVisible(true);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Dados de login não conferem! \nPor favor, tente novamente!", "Problema Encontrado", JOptionPane.WARNING_MESSAGE);
+                }
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha os Dados Corretamente!", "Informações de Login", JOptionPane.ERROR_MESSAGE);
+            else{        
+                JOptionPane.showMessageDialog(null, "Seus dados de login estão incorretos! \nFavor preenche-los novamente", "Problema Encontrado", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btAcessarActionPerformed
 
