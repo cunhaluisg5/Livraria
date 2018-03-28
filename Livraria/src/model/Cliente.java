@@ -29,51 +29,51 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getCpf() {
+    private String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    private void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public String getNome() {
+    private String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    private void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getEstadoCivil() {
+    private String getEstadoCivil() {
         return estadoCivil;
     }
 
-    public void setEstadoCivil(String estadoCivil) {
+    private void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
 
-    public String getTelefone() {
+    private String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    private void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
+    private String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.email = email;
     }
 
-    public Endereco getEndereco() {
+    private Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    private void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }

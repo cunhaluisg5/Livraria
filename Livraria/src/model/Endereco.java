@@ -28,43 +28,43 @@ public class Endereco {
         
     }
 
-    public String getLogradouro() {
+    private String getLogradouro() {
         return logradouro;
     }
 
-    public void setLogradouro(String logradouro) {
+    private void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
 
-    public String getComplemento() {
+    private String getComplemento() {
         return complemento;
     }
 
-    public void setComplemento(String complemento) {
+    private void setComplemento(String complemento) {
         this.complemento = complemento;
     }
 
-    public String getCidade() {
+    private String getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    private void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
+    private String getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    private void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public String getCep() {
+    private String getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    private void setCep(String cep) {
         this.cep = cep;
     }
 }
