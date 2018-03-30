@@ -378,9 +378,6 @@
                             <Property name="text" type="java.lang.String" value="Casado"/>
                             <Property name="name" type="java.lang.String" value="rbCasado" noResource="true"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbCasadoActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="rbDivorciado">
                           <Properties>
@@ -453,18 +450,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="tfCidade" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lbLogradouro" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="tfLogradouro" min="-2" pref="200" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="tfCidade" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="lbLogradouro" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfLogradouro" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbComplemento" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">

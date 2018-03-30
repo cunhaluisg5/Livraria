@@ -5,17 +5,19 @@
  */
 package forms;
 
+import dao.ClienteDao;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormPrincipal
-     */
+    public static ClienteDao clientesdao;
+    
     public FormPrincipal() {
         initComponents();
+        clientesdao = new ClienteDao();
     }
 
     /**

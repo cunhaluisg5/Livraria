@@ -6,6 +6,7 @@
 package forms;
 
 import java.awt.Color;
+import model.Cliente;
 
 /**
  *
@@ -13,9 +14,8 @@ import java.awt.Color;
  */
 public class FormCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormCliente
-     */
+    Cliente cliente;
+    
     public FormCliente() {
         initComponents();
         btBuscar.setBackground(Color.white);
@@ -140,11 +140,6 @@ public class FormCliente extends javax.swing.JFrame {
         rbCasado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbCasado.setText("Casado");
         rbCasado.setName("rbCasado"); // NOI18N
-        rbCasado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbCasadoActionPerformed(evt);
-            }
-        });
 
         rbDivorciado.setBackground(new java.awt.Color(214, 217, 223));
         grEstadoCivil.add(rbDivorciado);
@@ -277,14 +272,10 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpEnderecoLayout.createSequentialGroup()
                         .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEnderecoLayout.createSequentialGroup()
-                                .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jpEnderecoLayout.createSequentialGroup()
-                                .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbLogradouro)
-                                    .addComponent(tfLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbLogradouro)
+                            .addComponent(tfLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbComplemento)
                             .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -425,10 +416,6 @@ public class FormCliente extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(609, 470));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rbCasadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCasadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbCasadoActionPerformed
 
     /**
      * @param args the command line arguments

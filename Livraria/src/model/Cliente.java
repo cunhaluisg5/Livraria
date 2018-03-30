@@ -29,7 +29,7 @@ public class Cliente {
         this.email = email;
     }
 
-    private String getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
@@ -37,11 +37,11 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    private String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    private void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
