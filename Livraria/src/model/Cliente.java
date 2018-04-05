@@ -33,7 +33,7 @@ public class Cliente {
         return cpf;
     }
 
-    private void setCpf(String cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -45,35 +45,35 @@ public class Cliente {
         this.nome = nome;
     }
 
-    private String getEstadoCivil() {
+    public String getEstadoCivil() {
         return estadoCivil;
     }
 
-    private void setEstadoCivil(String estadoCivil) {
+    public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
 
-    private String getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    private void setTelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    private String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    private Endereco getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    private void setEndereco(Endereco endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }

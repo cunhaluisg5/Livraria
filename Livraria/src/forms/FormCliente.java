@@ -6,6 +6,9 @@
 package forms;
 
 import java.awt.Color;
+import java.util.Enumeration;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import model.Cliente;
 
 /**
@@ -97,6 +100,11 @@ public class FormCliente extends javax.swing.JFrame {
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buscar.png"))); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.setName("btBuscar"); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(214, 217, 223));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -423,9 +431,35 @@ public class FormCliente extends javax.swing.JFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // Peguei os valores dos campos
         Cliente cliente = new Cliente(); // Criei o objeto cliente
+        cliente.setCpf(tfCPF.getText());
+        cliente.setNome(tfNome.getText());
+        cliente.setTelefone(tfTelefone.getText());
+        cliente.setEmail(tfEmail.getText());
+        JRadioButton radio;
+        Enumeration jr = grEstadoCivil.getElements();
+        while ( jr.hasMoreElements() )
+        {
+            radio = (JRadioButton) jr.nextElement();
+            if (radio.isSelected())
+              cliente.setEstadoCivil(radio.getText());
+        }
         // Coloquei cada dado no cliente
         FormPrincipal.bdcliente.inserirCliente(cliente);
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        // Pegar o cpf do campo
+        String cpf = tfCPF.getText();
+        Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
+        if(cliente != null){
+            tfCPF.setText(cliente.getCpf());
+            tfNome.setText(cliente.getNome());
+            tfTelefone.setText(cliente.getTelefone());
+            tfEmail.setText(cliente.getEmail());
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro! Cliente não encontrado!", "Alerta", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btBuscarActionPerformed
 
     /**
      * @param args the command line arguments
