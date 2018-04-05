@@ -355,6 +355,11 @@ public class FormCliente extends javax.swing.JFrame {
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/limpar.png"))); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
@@ -469,6 +474,20 @@ public class FormCliente extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfCPF.setText("");
+        tfNome.setText("");
+        tfTelefone.setText("");
+        tfEmail.setText("");
+        grEstadoCivil.clearSelection();
+        tfLogradouro.setText("");
+        tfComplemento.setText("");
+        tfCidade.setText("");
+        tfCEP.setText("");
+        cbEstado.setSelectedIndex(-1);
+        tfCPF.requestFocus();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
