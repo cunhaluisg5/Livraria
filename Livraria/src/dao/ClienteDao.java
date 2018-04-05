@@ -20,7 +20,7 @@ public class ClienteDao {
         lista = new ArrayList<Cliente>();
     }
     
-    public void adicionarCliente(Cliente cliente){
+    public void inserirCliente(Cliente cliente){
         lista.add(cliente);
     }
     
@@ -35,16 +35,21 @@ public class ClienteDao {
     }
     
     public void removerCliente(String cpf){
-        lista.remove(buscarCliente(cpf));
+        Cliente cli = buscarCliente(cpf);
+        if(cli != null){
+            lista.remove(cli);
+        }
     }
     
-    public void alterarCliente(Cliente cliente){
-        Cliente cli = buscarCliente(cliente.getCpf());
-        int indice = lista.indexOf(cli);
-        lista.set(indice, cli);
+    public void atualizarCliente(String cpf){
+        Cliente cli = buscarCliente(cpf);
+        if(cli != null){
+            int idx = lista.indexOf(cli);
+            lista.set(idx, cli);
+        }
     }
     
-    public List todosClientes(){
+    public List<Cliente> todosClientes(){
         return lista;
     }
 }

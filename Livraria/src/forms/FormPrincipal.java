@@ -13,11 +13,11 @@ import dao.ClienteDao;
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
-    public static ClienteDao clientesdao;
+    public static ClienteDao bdcliente = null;
     
     public FormPrincipal() {
+        bdcliente = new ClienteDao();
         initComponents();
-        clientesdao = new ClienteDao();
     }
 
     /**

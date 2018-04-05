@@ -13,8 +13,6 @@ import model.Cliente;
  * @author Luís Gustavo
  */
 public class FormCliente extends javax.swing.JFrame {
-
-    Cliente cliente;
     
     public FormCliente() {
         initComponents();
@@ -334,6 +332,11 @@ public class FormCliente extends javax.swing.JFrame {
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserirCliente.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
         btCadastrar.setName("btCadastrar"); // NOI18N
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
 
         btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/atualizar.png"))); // NOI18N
@@ -416,6 +419,13 @@ public class FormCliente extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(609, 470));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        // Peguei os valores dos campos
+        Cliente cliente = new Cliente(); // Criei o objeto cliente
+        // Coloquei cada dado no cliente
+        FormPrincipal.bdcliente.inserirCliente(cliente);
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
