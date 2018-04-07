@@ -6,9 +6,12 @@
 package forms;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.util.Enumeration;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import model.Cliente;
 import model.Endereco;
 
@@ -467,7 +470,7 @@ public class FormCliente extends javax.swing.JFrame {
             endereco.setComplemento(tfComplemento.getText());
             endereco.setCidade(tfCidade.getText());
             endereco.setCep(tfCEP.getText());
-            //endereco.setEstado(cbEstado.getSelectedItem().toString());
+            endereco.setEstado(cbEstado.getSelectedItem().toString());
             cliente.setEndereco(endereco);
             // Coloquei cada dado no cliente
             FormPrincipal.bdcliente.inserirCliente(cliente);
@@ -480,15 +483,32 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // Pegar o cpf do campo
-        String cpf = tfCPF.getText();
+        String cpf = tfCPF.getText();        
         Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
         if(cliente != null){
             tfCPF.setText(cliente.getCpf());
             tfNome.setText(cliente.getNome());
             tfTelefone.setText(cliente.getTelefone());
             tfEmail.setText(cliente.getEmail());
+            JRadioButton radio; 
+            Enumeration jr = grEstadoCivil.getElements(); 
+            while ( jr.hasMoreElements() ) { 
+                radio = (JRadioButton) jr.nextElement(); 
+                if (radio.getText().equals(cliente.getEstadoCivil())) 
+                    radio.setSelected(true); 
+            }
+            tfLogradouro.setText(cliente.getEndereco().getLogradouro());
+            tfComplemento.setText(cliente.getEndereco().getComplemento());
+            tfCidade.setText(cliente.getEndereco().getCidade());
+            tfCEP.setText(cliente.getEndereco().getCep());
+            for(int i = 0; i < cbEstado.getItemCount(); i++)
+            {
+            if ( cbEstado.getItemAt(i).equals(cliente.getEndereco().getEstado()) )
+                cbEstado.setSelectedIndex(i);
+            }
+            
         }else{
-            JOptionPane.showMessageDialog(null, "Erro! Cliente não encontrado!", "Alerta", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro! Cliente não encontrado!", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btBuscarActionPerformed
 

@@ -76,4 +76,11 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+    
+    public String toString(){
+        return "CPF: " + cpf + "\nNome: " + nome + "\nEstado civil: " + estadoCivil + "\nTelefone: " 
+        + telefone + "\nEmail: " + email + "\nLogradouro: " + endereco.getLogradouro() + "\nComplemento: " 
+        + endereco.getComplemento() + "\nCidade: " + endereco.getCidade() + "\nEstado: " 
+        + endereco.getEstado() + "\nCEP: " + endereco.getCep();
+    }
 }
