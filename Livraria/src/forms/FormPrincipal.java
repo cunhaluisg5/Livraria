@@ -85,6 +85,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         JMenuItemProduto.setText("Produto");
         JMenuItemProduto.setName("JMenuItemProduto"); // NOI18N
+        JMenuItemProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemProdutoActionPerformed(evt);
+            }
+        });
         JMenuCadastros.add(JMenuItemProduto);
         JMenuCadastros.add(jSeparator1);
 
@@ -171,6 +176,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
         new FormConsultaCliente().setVisible(true);
     }//GEN-LAST:event_JMenuItemClientesActionPerformed
+
+    private void JMenuItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemProdutoActionPerformed
+        new FormLivro().setVisible(true);
+    }//GEN-LAST:event_JMenuItemProdutoActionPerformed
 
     /**
      * @param args the command line arguments
