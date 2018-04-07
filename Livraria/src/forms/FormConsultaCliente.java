@@ -79,6 +79,11 @@ public class FormConsultaCliente extends javax.swing.JFrame {
         btExcluir.setText("Excluir");
         btExcluir.setEnabled(false);
         btExcluir.setName("btExcluir"); // NOI18N
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icSair.png"))); // NOI18N
@@ -145,12 +150,31 @@ public class FormConsultaCliente extends javax.swing.JFrame {
         if(cliente != null)
         {
             taInfo.setText(cliente.toString());
+            btExcluir.setEnabled(true);
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Erro! Cliente não encontrado!", "Alerta", JOptionPane.ERROR_MESSAGE);
+            taInfo.setText("");
+            tfCPF.setText("");
+            tfCPF.requestFocus();
         }
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        String cpf = tfCPF.getText();
+        Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
+        String nome = cliente.getNome();
+        int recebe = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o cliente " + nome, "Alerta de Remoção", JOptionPane.WARNING_MESSAGE);
+        if(recebe == 0){
+            FormPrincipal.bdcliente.removerCliente(cliente.getCpf());
+            JOptionPane.showMessageDialog(null, "O cliente " + nome + " foi excluído!", "Informação de Exclusão", JOptionPane.INFORMATION_MESSAGE);
+            taInfo.setText("");
+            btExcluir.setEnabled(false);
+            tfCPF.setText("");
+            tfCPF.requestFocus();
+        }
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
