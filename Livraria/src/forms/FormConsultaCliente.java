@@ -58,6 +58,7 @@ public class FormConsultaCliente extends javax.swing.JFrame {
         btBuscar.setText("Buscar Cliente");
         btBuscar.setName("btBuscar"); // NOI18N
 
+        taInfo.setEditable(false);
         taInfo.setColumns(20);
         taInfo.setRows(5);
         taInfo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));

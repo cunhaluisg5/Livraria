@@ -24,47 +24,47 @@ public class Endereco {
         this.cep = cep;
     }
 
-    Endereco() {
+    public Endereco() {
         
     }
 
-    private String getLogradouro() {
+    public String getLogradouro() {
         return logradouro;
     }
 
-    private void setLogradouro(String logradouro) {
+    public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
 
-    private String getComplemento() {
+    public String getComplemento() {
         return complemento;
     }
 
-    private void setComplemento(String complemento) {
+    public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
 
-    private String getCidade() {
+    public String getCidade() {
         return cidade;
     }
 
-    private void setCidade(String cidade) {
+    public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
-    private String getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    private void setEstado(String estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    private String getCep() {
+    public String getCep() {
         return cep;
     }
 
-    private void setCep(String cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 }

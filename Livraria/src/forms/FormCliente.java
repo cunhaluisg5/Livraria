@@ -10,6 +10,7 @@ import java.util.Enumeration;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import model.Cliente;
+import model.Endereco;
 
 /**
  *
@@ -440,21 +441,41 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // Peguei os valores dos campos
-        Cliente cliente = new Cliente(); // Criei o objeto cliente
-        cliente.setCpf(tfCPF.getText());
-        cliente.setNome(tfNome.getText());
-        cliente.setTelefone(tfTelefone.getText());
-        cliente.setEmail(tfEmail.getText());
-        JRadioButton radio;
-        Enumeration jr = grEstadoCivil.getElements();
+        JRadioButton radio; 
+        String str = null;
+        Enumeration jr = grEstadoCivil.getElements(); 
         while ( jr.hasMoreElements() )
         {
-            radio = (JRadioButton) jr.nextElement();
+            radio = (JRadioButton) jr.nextElement(); 
             if (radio.isSelected())
-              cliente.setEstadoCivil(radio.getText());
+            {
+                str = radio.getText();
+            }
         }
-        // Coloquei cada dado no cliente
-        FormPrincipal.bdcliente.inserirCliente(cliente);
+        if((!tfNome.getText().trim().equals("")) && (!tfEmail.getText().trim().equals("")) && (str != null)
+        && (!tfLogradouro.getText().trim().equals("")) && (!tfComplemento.getText().trim().equals("")) && 
+        (!tfCidade.getText().trim().equals("")) && (cbEstado.getSelectedIndex() != -1)){        
+            Cliente cliente = new Cliente(); // Criei o objeto cliente
+            cliente.setCpf(tfCPF.getText());
+            cliente.setNome(tfNome.getText());
+            cliente.setTelefone(tfTelefone.getText());
+            cliente.setEmail(tfEmail.getText());
+            cliente.setEstadoCivil(str);
+
+            Endereco endereco = new Endereco();
+            endereco.setLogradouro(tfLogradouro.getText());
+            endereco.setComplemento(tfComplemento.getText());
+            endereco.setCidade(tfCidade.getText());
+            endereco.setCep(tfCEP.getText());
+            //endereco.setEstado(cbEstado.getSelectedItem().toString());
+            cliente.setEndereco(endereco);
+            // Coloquei cada dado no cliente
+            FormPrincipal.bdcliente.inserirCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para cadastrar!", "Informações de Cadastro", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
