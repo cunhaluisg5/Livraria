@@ -11,7 +11,6 @@ import java.util.Enumeration;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import model.Cliente;
 import model.Endereco;
 

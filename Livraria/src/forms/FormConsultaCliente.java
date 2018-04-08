@@ -5,6 +5,7 @@
  */
 package forms;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import model.Cliente;
 
@@ -19,6 +20,9 @@ public class FormConsultaCliente extends javax.swing.JFrame {
      */
     public FormConsultaCliente() {
         initComponents();
+        btBuscar.setBackground(Color.white);
+        btExcluir.setBackground(Color.white);
+        btSair.setBackground(Color.white);
     }
 
     /**
@@ -104,7 +108,7 @@ public class FormConsultaCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
                         .addComponent(btSair))
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -136,7 +140,7 @@ public class FormConsultaCliente extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(488, 438));
+        setSize(new java.awt.Dimension(598, 438));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
