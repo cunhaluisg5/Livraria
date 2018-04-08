@@ -60,6 +60,11 @@ public class FormConsultaCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfCPF.setName("tfCPF"); // NOI18N
+        tfCPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tfCPFMouseExited(evt);
+            }
+        });
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buscar.png"))); // NOI18N
@@ -150,18 +155,24 @@ public class FormConsultaCliente extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         String cpf = tfCPF.getText();
-        Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
-        if(cliente != null)
+        String cpfSemMascara = cpf.replace(".", "").replace("-", "");
+        if(!cpfSemMascara.trim().equals(""))
         {
-            taInfo.setText(cliente.toString());
-            btExcluir.setEnabled(true);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Erro! Cliente não encontrado!", "Alerta", JOptionPane.ERROR_MESSAGE);
-            taInfo.setText("");
-            tfCPF.setText("");
-            tfCPF.requestFocus();
+            Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
+            if(cliente != null)
+            {
+                taInfo.setText(cliente.toString());
+                btExcluir.setEnabled(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Cliente não encontrado!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
+                taInfo.setText("");
+                btExcluir.setEnabled(false);
+                tfCPF.requestFocus();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Informe o CPF para fazer a busca!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btBuscarActionPerformed
 
@@ -175,10 +186,18 @@ public class FormConsultaCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O cliente " + nome + " foi excluído!", "Informação de Exclusão", JOptionPane.INFORMATION_MESSAGE);
             taInfo.setText("");
             btExcluir.setEnabled(false);
-            tfCPF.setText("");
+            tfCPF.setValue(null);
             tfCPF.requestFocus();
         }
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void tfCPFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCPFMouseExited
+        String cpfSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
+        if(cpfSemMascara.trim().equals(""))
+        {
+            tfCPF.setValue(null);
+        }
+    }//GEN-LAST:event_tfCPFMouseExited
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package forms;
 
 import java.awt.Component;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -284,6 +285,11 @@ public class FormLivro extends javax.swing.JFrame {
                     {
                         JTextField field = (JTextField)c2; 
                         field.setText("");
+                    }
+                    if (c2 instanceof JFormattedTextField)
+                    {
+                        JFormattedTextField field = (JFormattedTextField)c2; 
+                        field.setValue(null);
                     }
                 }
             }

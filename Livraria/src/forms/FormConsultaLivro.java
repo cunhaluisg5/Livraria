@@ -16,7 +16,7 @@ import model.Livro;
  */
 public class FormConsultaLivro extends javax.swing.JFrame {
 
-    int cont = 0; //Em 0 o "Buscar Todos" está ativado. Em 1 o "Buscar Todos" está desativado
+    int cont = 0; //Em 1 o "Buscar Todos" está ativado. Em 0 o "Buscar Todos" está desativado
     
     public FormConsultaLivro() {
         initComponents();
@@ -182,11 +182,16 @@ public class FormConsultaLivro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Não existem livros cadastrados!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
             }
         }else{
-            Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
-            if(livro != null){
-                taInfo.setText(livro.toString());
+            if(!tfCodigo.getText().trim().equals(""))
+            {
+                Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+                if(livro != null){
+                    taInfo.setText(livro.toString());
+                }else{
+                    JOptionPane.showMessageDialog(null, "Não existe livro cadastrado no código informado!", "Informação de Cadastro", JOptionPane.ERROR_MESSAGE);
+                }
             }else{
-                JOptionPane.showMessageDialog(null, "Erro! Código não encontrado!", "Erro de Código", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Informe o código para fazer a busca!", "Atenção", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed

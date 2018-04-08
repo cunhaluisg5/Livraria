@@ -8,9 +8,12 @@ package forms;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.Enumeration;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import model.Cliente;
 import model.Endereco;
 
@@ -45,7 +48,10 @@ public class FormCliente extends javax.swing.JFrame {
         lbNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        btCadastrar = new javax.swing.JButton();
+        btAtualizar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jpDados = new javax.swing.JPanel();
         lbTelefone = new javax.swing.JLabel();
@@ -69,10 +75,6 @@ public class FormCliente extends javax.swing.JFrame {
         cbEstado = new javax.swing.JComboBox<>();
         lbCEP = new javax.swing.JLabel();
         tfCEP = new javax.swing.JFormattedTextField();
-        btCadastrar = new javax.swing.JButton();
-        btAtualizar = new javax.swing.JButton();
-        btLimpar = new javax.swing.JButton();
-        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Clientes");
@@ -91,6 +93,11 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfCPF.setName("tfCPF"); // NOI18N
+        tfCPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tfCPFMouseExited(evt);
+            }
+        });
 
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome Completo:");
@@ -109,10 +116,43 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(214, 217, 223));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserirCliente.png"))); // NOI18N
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.setName("btCadastrar"); // NOI18N
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
+
+        btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/atualizar.png"))); // NOI18N
+        btAtualizar.setText("Atualizar");
+        btAtualizar.setName("btAtualizar"); // NOI18N
+
+        btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/limpar.png"))); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         jTabbedPane1.setBackground(new java.awt.Color(214, 217, 223));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setName("jpDados"); // NOI18N
 
         jpDados.setBackground(new java.awt.Color(214, 217, 223));
@@ -127,6 +167,11 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfTelefone.setName("tfTelefone"); // NOI18N
+        tfTelefone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tfTelefoneMouseExited(evt);
+            }
+        });
 
         lbEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbEmail.setText("Email:");
@@ -226,7 +271,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jpEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -271,6 +316,11 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfCEP.setName("tfCEP"); // NOI18N
+        tfCEP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tfCEPMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpEnderecoLayout = new javax.swing.GroupLayout(jpEndereco);
         jpEndereco.setLayout(jpEnderecoLayout);
@@ -284,7 +334,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbLogradouro)
                             .addComponent(tfLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbComplemento)
                             .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -313,7 +363,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCidade)
                     .addComponent(lbEstado)
@@ -328,52 +378,6 @@ public class FormCliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Endereço Completo", jpEndereco);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserirCliente.png"))); // NOI18N
-        btCadastrar.setText("Cadastrar");
-        btCadastrar.setName("btCadastrar"); // NOI18N
-        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCadastrarActionPerformed(evt);
-            }
-        });
-
-        btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/atualizar.png"))); // NOI18N
-        btAtualizar.setText("Atualizar");
-        btAtualizar.setName("btAtualizar"); // NOI18N
-
-        btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/limpar.png"))); // NOI18N
-        btLimpar.setText("Limpar");
-        btLimpar.setName("btLimpar"); // NOI18N
-        btLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLimparActionPerformed(evt);
-            }
-        });
-
-        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
-        btSair.setText("Sair");
-        btSair.setName("btSair"); // NOI18N
-        btSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSairActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -381,7 +385,6 @@ public class FormCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbCPF)
@@ -402,67 +405,72 @@ public class FormCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane1))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(lbNome))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lbCPF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(lbNome))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(lbCPF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btBuscar)))))
-                        .addGap(29, 29, 29)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btSair, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btBuscar)))))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btSair, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(609, 470));
+        setSize(new java.awt.Dimension(612, 470));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // Peguei os valores dos campos
         JRadioButton radio; 
-        String str = null;
+        String estadoCivil = null;
         Enumeration jr = grEstadoCivil.getElements(); 
         while ( jr.hasMoreElements() )
         {
             radio = (JRadioButton) jr.nextElement(); 
             if (radio.isSelected())
             {
-                str = radio.getText();
+                estadoCivil = radio.getText();
             }
         }
-        if((!tfNome.getText().trim().equals("")) && (!tfEmail.getText().trim().equals("")) && (str != null)
-        && (!tfLogradouro.getText().trim().equals("")) && (!tfComplemento.getText().trim().equals("")) && 
-        (!tfCidade.getText().trim().equals("")) && (cbEstado.getSelectedIndex() != -1)){        
+        String cpfSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
+        String telefoneSemMascara = tfTelefone.getText().replace("(", "").replace(")", "").replace("-", "");
+        String cepSemMascara = tfCEP.getText().replace("-", "");
+        if((!cpfSemMascara.trim().equals("")) && (!tfNome.getText().trim().equals("")) && 
+        (!telefoneSemMascara.trim().equals("")) && (!tfEmail.getText().trim().equals("")) && 
+        (estadoCivil != null) && (!tfLogradouro.getText().trim().equals("")) && 
+        (!tfComplemento.getText().trim().equals("")) && (!tfCidade.getText().trim().equals("")) && 
+        (!cepSemMascara.trim().equals("")) && (cbEstado.getSelectedIndex() != -1)){        
             Cliente cliente = new Cliente(); // Criei o objeto cliente
             cliente.setCpf(tfCPF.getText());
             cliente.setNome(tfNome.getText());
             cliente.setTelefone(tfTelefone.getText());
             cliente.setEmail(tfEmail.getText());
-            cliente.setEstadoCivil(str);
+            cliente.setEstadoCivil(estadoCivil);
 
             Endereco endereco = new Endereco();
             endereco.setLogradouro(tfLogradouro.getText());
@@ -482,32 +490,38 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // Pegar o cpf do campo
-        String cpf = tfCPF.getText();        
-        Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
-        if(cliente != null){
-            tfCPF.setText(cliente.getCpf());
-            tfNome.setText(cliente.getNome());
-            tfTelefone.setText(cliente.getTelefone());
-            tfEmail.setText(cliente.getEmail());
-            JRadioButton radio; 
-            Enumeration jr = grEstadoCivil.getElements(); 
-            while ( jr.hasMoreElements() ) { 
-                radio = (JRadioButton) jr.nextElement(); 
-                if (radio.getText().equals(cliente.getEstadoCivil())) 
-                    radio.setSelected(true); 
+        String cpf = tfCPF.getText(); 
+        String cpfSemMascara = cpf.replace(".", "").replace("-", "");
+        if(!cpfSemMascara.trim().equals(""))
+        {
+            Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
+            if(cliente != null){
+                tfCPF.setText(cliente.getCpf());
+                tfNome.setText(cliente.getNome());
+                tfTelefone.setText(cliente.getTelefone());
+                tfEmail.setText(cliente.getEmail());
+                JRadioButton radio; 
+                Enumeration jr = grEstadoCivil.getElements(); 
+                while ( jr.hasMoreElements() ) { 
+                    radio = (JRadioButton) jr.nextElement(); 
+                    if (radio.getText().equals(cliente.getEstadoCivil())) 
+                        radio.setSelected(true); 
+                }
+                tfLogradouro.setText(cliente.getEndereco().getLogradouro());
+                tfComplemento.setText(cliente.getEndereco().getComplemento());
+                tfCidade.setText(cliente.getEndereco().getCidade());
+                tfCEP.setText(cliente.getEndereco().getCep());
+                for(int i = 0; i < cbEstado.getItemCount(); i++)
+                {
+                if ( cbEstado.getItemAt(i).equals(cliente.getEndereco().getEstado()) )
+                    cbEstado.setSelectedIndex(i);
+                }
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente não encontrado!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
             }
-            tfLogradouro.setText(cliente.getEndereco().getLogradouro());
-            tfComplemento.setText(cliente.getEndereco().getComplemento());
-            tfCidade.setText(cliente.getEndereco().getCidade());
-            tfCEP.setText(cliente.getEndereco().getCep());
-            for(int i = 0; i < cbEstado.getItemCount(); i++)
-            {
-            if ( cbEstado.getItemAt(i).equals(cliente.getEndereco().getEstado()) )
-                cbEstado.setSelectedIndex(i);
-            }
-            
         }else{
-            JOptionPane.showMessageDialog(null, "Erro! Cliente não encontrado!", "Alerta", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Informe o CPF para fazer a busca!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btBuscarActionPerformed
 
@@ -516,18 +530,83 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfCPF.setText("");
-        tfNome.setText("");
-        tfTelefone.setText("");
-        tfEmail.setText("");
+        for(int i = 0; i < getContentPane().getComponentCount(); i++)
+        {
+            Component c = getContentPane().getComponent(i); 
+            if ( c instanceof JPanel)
+            {
+                JPanel p = (JPanel)c;
+                for(int j = 0; j < p.getComponentCount(); j++)
+                {
+                    Component c2 = p.getComponent(j);
+                    if (c2 instanceof JTabbedPane)
+                    {
+                        JTabbedPane p2 = (JTabbedPane)c2; 
+                        for(int k = 0; k < p2.getComponentCount(); k++)
+                        {
+                            Component c3 = p2.getComponent(k);
+                            if (c3 instanceof JPanel)
+                            {
+                                JPanel p3 = (JPanel)c3;
+                                for(int l = 0; l < p3.getComponentCount(); l++)
+                                {
+                                    Component c4 = p3.getComponent(l);
+                                    if (c4 instanceof JTextField)
+                                    {
+                                        JTextField field = (JTextField)c4; 
+                                        field.setText("");
+                                    }
+                                    if (c4 instanceof JFormattedTextField)
+                                    {
+                                        JFormattedTextField field = (JFormattedTextField)c4; 
+                                        field.setValue(null);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (c2 instanceof JTextField)
+                    {
+                        JTextField field = (JTextField)c2; 
+                        field.setText("");
+                    }
+                    if (c2 instanceof JFormattedTextField)
+                    {
+                        JFormattedTextField field = (JFormattedTextField)c2; 
+                        field.setValue(null);
+                    }
+                }
+            }
+        }
+        
         grEstadoCivil.clearSelection();
-        tfLogradouro.setText("");
-        tfComplemento.setText("");
-        tfCidade.setText("");
-        tfCEP.setText("");
         cbEstado.setSelectedIndex(-1);
         tfCPF.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void tfCPFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCPFMouseExited
+        String cpfSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
+        if(cpfSemMascara.trim().equals(""))
+        {
+            tfCPF.setValue(null);
+        }
+    }//GEN-LAST:event_tfCPFMouseExited
+
+    private void tfTelefoneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTelefoneMouseExited
+        String telefoneSemMascara = tfTelefone.getText().replace("(", "").replace(")", "").replace("-", "");
+        if(telefoneSemMascara.trim().equals(""))
+        {
+            tfTelefone.setValue(null);
+        }
+    }//GEN-LAST:event_tfTelefoneMouseExited
+
+    private void tfCEPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCEPMouseExited
+        String cepSemMascara = tfCEP.getText().replace("-", "");
+        if(cepSemMascara.trim().equals(""))
+        {
+            tfCEP.setValue(null);
+        }
+    }//GEN-LAST:event_tfCEPMouseExited
 
     /**
      * @param args the command line arguments
@@ -573,7 +652,6 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.ButtonGroup grEstadoCivil;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel jpDados;
     private javax.swing.JPanel jpEndereco;
