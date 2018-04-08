@@ -173,6 +173,7 @@
               <Image iconType="3" name="/icones/icAtualizar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btEditar" noResource="true"/>
           </Properties>
         </Component>
@@ -185,6 +186,7 @@
               <Image iconType="3" name="/icones/icExcluir.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btExcluir" noResource="true"/>
           </Properties>
         </Component>
@@ -199,6 +201,9 @@
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="name" type="java.lang.String" value="btSair" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSairActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

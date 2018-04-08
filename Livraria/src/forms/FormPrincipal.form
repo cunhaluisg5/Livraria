@@ -55,6 +55,9 @@
                 <Property name="text" type="java.lang.String" value="Produtos"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemProdutos" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemProdutosActionPerformed"/>
+              </Events>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="JMenuCompras">
               <Properties>

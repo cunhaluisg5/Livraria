@@ -76,17 +76,24 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icAtualizar.png"))); // NOI18N
         btEditar.setText("Editar");
+        btEditar.setEnabled(false);
         btEditar.setName("btEditar"); // NOI18N
 
         btExcluir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icExcluir.png"))); // NOI18N
         btExcluir.setText("Excluir");
+        btExcluir.setEnabled(false);
         btExcluir.setName("btExcluir"); // NOI18N
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icSair.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,6 +151,10 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(693, 424));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     /**
      * @param args the command line arguments
