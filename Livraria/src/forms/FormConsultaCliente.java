@@ -180,7 +180,7 @@ public class FormConsultaCliente extends javax.swing.JFrame {
         String cpf = tfCPF.getText();
         Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
         String nome = cliente.getNome();
-        int recebe = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o cliente " + nome, "Alerta de Remoção", JOptionPane.WARNING_MESSAGE);
+        int recebe = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o cliente " + nome, "Alerta de Remoção", JOptionPane.YES_NO_OPTION);
         if(recebe == 0){
             FormPrincipal.bdcliente.removerCliente(cliente.getCpf());
             JOptionPane.showMessageDialog(null, "O cliente " + nome + " foi excluído!", "Informação de Exclusão", JOptionPane.INFORMATION_MESSAGE);

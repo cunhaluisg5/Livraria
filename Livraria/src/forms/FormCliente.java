@@ -129,7 +129,13 @@ public class FormCliente extends javax.swing.JFrame {
         btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/atualizar.png"))); // NOI18N
         btAtualizar.setText("Atualizar");
+        btAtualizar.setEnabled(false);
         btAtualizar.setName("btAtualizar"); // NOI18N
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarActionPerformed(evt);
+            }
+        });
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/limpar.png"))); // NOI18N
@@ -490,12 +496,14 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // Pegar o cpf do campo
+        btAtualizar.setEnabled(false);
         String cpf = tfCPF.getText(); 
         String cpfSemMascara = cpf.replace(".", "").replace("-", "");
         if(!cpfSemMascara.trim().equals(""))
         {
             Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
-            if(cliente != null){
+            if(cliente != null)
+            {
                 tfCPF.setText(cliente.getCpf());
                 tfNome.setText(cliente.getNome());
                 tfTelefone.setText(cliente.getTelefone());
@@ -516,7 +524,7 @@ public class FormCliente extends javax.swing.JFrame {
                 if ( cbEstado.getItemAt(i).equals(cliente.getEndereco().getEstado()) )
                     cbEstado.setSelectedIndex(i);
                 }
-
+                btAtualizar.setEnabled(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
             }
@@ -581,6 +589,7 @@ public class FormCliente extends javax.swing.JFrame {
         
         grEstadoCivil.clearSelection();
         cbEstado.setSelectedIndex(-1);
+        btAtualizar.setEnabled(false);
         tfCPF.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -607,6 +616,46 @@ public class FormCliente extends javax.swing.JFrame {
             tfCEP.setValue(null);
         }
     }//GEN-LAST:event_tfCEPMouseExited
+
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+        Cliente cli = FormPrincipal.bdcliente.buscarCliente(tfCPF.getText());
+        if(cli != null)
+        {
+            int recebe = JOptionPane.showConfirmDialog(null, "Deseja realmente atualizar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(recebe == 0)
+            {
+                Cliente cliente = new Cliente();
+                JRadioButton radio; 
+                String estadoCivil = null;
+                Enumeration jr = grEstadoCivil.getElements(); 
+                while ( jr.hasMoreElements() )
+                {
+                    radio = (JRadioButton) jr.nextElement(); 
+                    if (radio.isSelected())
+                    {
+                        estadoCivil = radio.getText();
+                    }
+                }
+                cliente.setCpf(tfCPF.getText());
+                cliente.setNome(tfNome.getText());
+                cliente.setTelefone(tfTelefone.getText());
+                cliente.setEmail(tfEmail.getText());
+                cliente.setEstadoCivil(estadoCivil);
+
+                Endereco endereco = new Endereco();
+                endereco.setLogradouro(tfLogradouro.getText());
+                endereco.setComplemento(tfComplemento.getText());
+                endereco.setCidade(tfCidade.getText());
+                endereco.setCep(tfCEP.getText());
+                endereco.setEstado(cbEstado.getSelectedItem().toString());
+                cliente.setEndereco(endereco);
+                FormPrincipal.bdcliente.atualizarCliente(cliente);
+                JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!", "Informação de Atualização", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Você alterou o CPF!", "Atenção", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
     /**
      * @param args the command line arguments

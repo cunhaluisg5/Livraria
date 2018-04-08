@@ -41,11 +41,11 @@ public class ClienteDao {
         }
     }
     
-    public void atualizarCliente(String cpf){
-        Cliente cli = buscarCliente(cpf);
+    public void atualizarCliente(Cliente cliente){
+        Cliente cli = buscarCliente(cliente.getCpf());
         if(cli != null){
             int idx = lista.indexOf(cli);
-            lista.set(idx, cli);
+            lista.set(idx, cliente);
         }
     }
     
