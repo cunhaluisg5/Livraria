@@ -132,6 +132,9 @@
             <Property name="text" type="java.lang.String" value="Buscar Livro"/>
             <Property name="name" type="java.lang.String" value="btBuscar" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="boBuscar">
           <Properties>
@@ -141,6 +144,9 @@
             <Property name="text" type="java.lang.String" value="Buscar Todos"/>
             <Property name="name" type="java.lang.String" value="boBuscar" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boBuscarMouseClicked"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

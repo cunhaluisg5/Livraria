@@ -13,9 +13,8 @@ import java.awt.Color;
  */
 public class FormConsultaLivro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormConsultaLivro
-     */
+    int cont = 0;
+    
     public FormConsultaLivro() {
         initComponents();
         btBuscar.setBackground(Color.white);
@@ -61,10 +60,20 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icBuscar.png"))); // NOI18N
         btBuscar.setText("Buscar Livro");
         btBuscar.setName("btBuscar"); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         boBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         boBuscar.setText("Buscar Todos");
         boBuscar.setName("boBuscar"); // NOI18N
+        boBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boBuscarMouseClicked(evt);
+            }
+        });
 
         taInfo.setEditable(false);
         taInfo.setColumns(20);
@@ -155,6 +164,20 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void boBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boBuscarMouseClicked
+        if(cont == 0){
+            tfCodigo.setEnabled(false);
+            cont = 1;
+        }else{
+            tfCodigo.setEnabled(true);
+            cont = 0;
+        }
+    }//GEN-LAST:event_boBuscarMouseClicked
 
     /**
      * @param args the command line arguments
