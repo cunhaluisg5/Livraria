@@ -128,6 +128,11 @@ public class FormLivro extends javax.swing.JFrame {
         btSair.setName("btSair"); // NOI18N
         btSair.setPreferredSize(new java.awt.Dimension(80, 73));
         btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btSair);
 
         lbCodigo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -286,6 +291,10 @@ public class FormLivro extends javax.swing.JFrame {
         cbFornecedor.setSelectedIndex(-1);
         tfCodigo.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     /**
      * @param args the command line arguments
