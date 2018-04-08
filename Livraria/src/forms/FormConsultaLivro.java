@@ -6,6 +6,9 @@
 package forms;
 
 import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Livro;
 
 /**
  *
@@ -13,7 +16,7 @@ import java.awt.Color;
  */
 public class FormConsultaLivro extends javax.swing.JFrame {
 
-    int cont = 0;
+    int cont = 0; //Em 0 o "Buscar Todos" está ativado. Em 1 o "Buscar Todos" está desativado
     
     public FormConsultaLivro() {
         initComponents();
@@ -166,7 +169,26 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        taInfo.setText("");
+        if(cont == 1){
+            List<Livro> livro = FormPrincipal.bdlivro.todosLivros();
+            if(!livro.isEmpty()){
+                String recebe = livro.get(0).toString() + "\n";
+                for(int i = 1; i < livro.size(); i++){
+                    recebe = recebe + livro.get(i).toString() + "\n";
+                }
+                taInfo.setText(recebe);
+            }else{
+                JOptionPane.showMessageDialog(null, "Não existem livros cadastrados!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+            if(livro != null){
+                taInfo.setText(livro.toString());
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro! Código não encontrado!", "Erro de Código", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void boBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boBuscarMouseClicked

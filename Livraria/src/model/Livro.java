@@ -80,6 +80,6 @@ public class Livro {
     public String toString(){
         return "Código: " + codigo + "\nTítulo: " + titulo + "\nFornecedor: " + fornecedor
         + "\nQuantidade em estoque: " + quantidadeEstoque + "\nValor unitário: " + valorUnitario
-        + "\nData de publicação: " + data;
+        + "\nData de publicação: " + data + "\n";
     }
 }

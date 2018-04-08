@@ -24,17 +24,17 @@ public class LivroDao {
         lista.add(livro);
     }
     
-    public Livro buscarLivro(int codigo){
+    public Livro buscarLivro(String codigo){
         Livro li = null;
         for(int i = 0; i < lista.size(); i++){
-            if(codigo == Integer.parseInt(lista.get(i).getCodigo())){
+            if(codigo.equals(lista.get(i).getCodigo())){
                 li = lista.get(i);
             }
         }
         return li;
     }
     
-    public void removerLivro(int codigo){
+    public void removerLivro(String codigo){
         Livro li = buscarLivro(codigo);
         if(li != null){
             lista.remove(li);
@@ -42,7 +42,7 @@ public class LivroDao {
     }
     
     public void alterarLivro(Livro livro){
-        Livro li = buscarLivro(Integer.parseInt(livro.getCodigo()));
+        Livro li = buscarLivro(livro.getCodigo());
         if(li != null){
             int idx = lista.indexOf(li);
             lista.set(idx, li);
