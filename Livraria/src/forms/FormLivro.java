@@ -5,7 +5,10 @@
  */
 package forms;
 
+import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import model.Livro;
 
 /**
@@ -84,6 +87,7 @@ public class FormLivro extends javax.swing.JFrame {
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icAtualizar.png"))); // NOI18N
         btAtualizar.setText("Atualizar");
         btAtualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btAtualizar.setEnabled(false);
         btAtualizar.setFocusable(false);
         btAtualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btAtualizar.setMaximumSize(new java.awt.Dimension(80, 73));
@@ -105,6 +109,11 @@ public class FormLivro extends javax.swing.JFrame {
         btCancelar.setName("btCancelar"); // NOI18N
         btCancelar.setPreferredSize(new java.awt.Dimension(80, 73));
         btCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btCancelar);
         jToolBar1.add(jSeparator3);
 
@@ -255,6 +264,28 @@ public class FormLivro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para fazer o cadastro!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        for(int i = 0; i < getContentPane().getComponentCount(); i++)
+        {
+            Component c = getContentPane().getComponent(i); 
+            if ( c instanceof JPanel)
+            {
+                JPanel p = (JPanel)c;
+                for(int j = 0; j < p.getComponentCount(); j++)
+                {
+                    Component c2 = p.getComponent(j); 
+                    if (c2 instanceof JTextField)
+                    {
+                        JTextField field = (JTextField)c2; 
+                        field.setText("");
+                    }
+                }
+            }
+        }
+        cbFornecedor.setSelectedIndex(-1);
+        tfCodigo.requestFocus();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
      * @param args the command line arguments
