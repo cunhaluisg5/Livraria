@@ -13,14 +13,14 @@ public class Livro {
     private String codigo;
     private String titulo;
     private String fornecedor;
-    private int quantidadeEstoque;
-    private int valorUnitario;
+    private String quantidadeEstoque;
+    private String valorUnitario;
     private String data;
 
     public Livro() {
     }
 
-    public Livro(String codigo, String titulo, String fornecedor, int quantidadeEstoque, int valorUnitario, String data) {
+    public Livro(String codigo, String titulo, String fornecedor, String quantidadeEstoque, String valorUnitario, String data) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.fornecedor = fornecedor;
@@ -53,19 +53,19 @@ public class Livro {
         this.fornecedor = fornecedor;
     }
 
-    public int getQuantidadeEstoque() {
+    public String getQuantidadeEstoque() {
         return quantidadeEstoque;
     }
 
-    public void setQuantidadeEstoqque(int quantidadeEstoque) {
+    public void setQuantidadeEstoque(String quantidadeEstoque) {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public int getValorUnitario() {
+    public String getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(int valorUnitario) {
+    public void setValorUnitario(String valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 

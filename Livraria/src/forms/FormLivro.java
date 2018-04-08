@@ -5,6 +5,9 @@
  */
 package forms;
 
+import javax.swing.JOptionPane;
+import model.Livro;
+
 /**
  *
  * @author Luís Gustavo
@@ -69,6 +72,11 @@ public class FormLivro extends javax.swing.JFrame {
         btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.setPreferredSize(new java.awt.Dimension(80, 73));
         btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator1);
 
@@ -130,6 +138,7 @@ public class FormLivro extends javax.swing.JFrame {
         lbFornecedor.setName("lbFornecedor"); // NOI18N
 
         cbFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editora Melhoramentos" }));
+        cbFornecedor.setSelectedIndex(-1);
         cbFornecedor.setName("cbFornecedor"); // NOI18N
 
         lbValor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -226,6 +235,26 @@ public class FormLivro extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(592, 420));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        String recebe = tfData.getText().replace("/", "");
+        if((!tfCodigo.getText().trim().equals("")) && (!tfTitulo.getText().trim().equals("")) &&
+        (!tfValor.getText().trim().equals("")) && (!tfQuantidade.getText().trim().equals("")) && 
+        (!recebe.trim().equals("")) && (cbFornecedor.getSelectedIndex() != -1)){
+            Livro livro = new Livro();
+            livro.setCodigo(tfCodigo.getText());
+            livro.setTitulo(tfTitulo.getText());
+            livro.setValorUnitario(tfValor.getText());
+            livro.setQuantidadeEstoque(tfQuantidade.getText());
+            livro.setData(tfData.getText());
+            livro.setFornecedor(cbFornecedor.getSelectedItem().toString());
+            FormPrincipal.bdlivro.adicionarLivro(livro);
+            JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para fazer o cadastro!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

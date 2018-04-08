@@ -7,7 +7,6 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.Cliente;
 import model.Livro;
 
 /**
