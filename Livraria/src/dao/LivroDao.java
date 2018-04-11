@@ -45,7 +45,7 @@ public class LivroDao {
         Livro li = buscarLivro(livro.getCodigo());
         if(li != null){
             int idx = lista.indexOf(li);
-            lista.set(idx, li);
+            lista.set(idx, livro);
         }
     }
     

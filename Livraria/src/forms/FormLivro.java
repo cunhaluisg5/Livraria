@@ -97,6 +97,11 @@ public class FormLivro extends javax.swing.JFrame {
         btAtualizar.setName("btAtualizar"); // NOI18N
         btAtualizar.setPreferredSize(new java.awt.Dimension(80, 73));
         btAtualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btAtualizar);
         jToolBar1.add(jSeparator2);
 
@@ -300,6 +305,21 @@ public class FormLivro extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+        int recebe = JOptionPane.showConfirmDialog(null, "Deseja mesmo atualizar o livro?", "Atualização de Livro", JOptionPane.YES_NO_OPTION);
+        if(recebe == 0)
+        {
+            Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+            livro.setData(tfData.getText());
+            livro.setFornecedor(cbFornecedor.getSelectedItem().toString());
+            livro.setQuantidadeEstoque(tfQuantidade.getText());
+            livro.setTitulo(tfTitulo.getText());
+            livro.setValorUnitario(tfValor.getText());
+            FormPrincipal.bdlivro.alterarLivro(livro);
+            JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Atualização de Livro", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
