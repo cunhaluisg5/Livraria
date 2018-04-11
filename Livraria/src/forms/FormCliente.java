@@ -585,7 +585,7 @@ public class FormCliente extends javax.swing.JFrame {
         }
         
         grEstadoCivil.clearSelection();
-        cbEstado.setSelectedIndex(-1);
+        cbEstado.setSelectedIndex(0);
         btAtualizar.setEnabled(false);
         tfCPF.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed

@@ -91,6 +91,11 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         btEditar.setText("Editar");
         btEditar.setEnabled(false);
         btEditar.setName("btEditar"); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
         btExcluir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icExcluir.png"))); // NOI18N
@@ -188,6 +193,8 @@ public class FormConsultaLivro extends javax.swing.JFrame {
                 Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
                 if(livro != null){
                     taInfo.setText(livro.toString());
+                    btEditar.setEnabled(true);
+                    btExcluir.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "Não existe livro cadastrado no código informado!", "Informação de Cadastro", JOptionPane.ERROR_MESSAGE);
                 }
@@ -206,6 +213,10 @@ public class FormConsultaLivro extends javax.swing.JFrame {
             cont = 0;
         }
     }//GEN-LAST:event_boBuscarMouseClicked
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        new FormLivro().setVisible(true);
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments
