@@ -154,7 +154,6 @@ public class FormLivro extends javax.swing.JFrame {
         lbFornecedor.setName("lbFornecedor"); // NOI18N
 
         cbFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editora Melhoramentos" }));
-        cbFornecedor.setSelectedIndex(-1);
         cbFornecedor.setName("cbFornecedor"); // NOI18N
 
         lbValor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -245,26 +244,33 @@ public class FormLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String recebe = tfData.getText().replace("/", "");
-        if((!tfCodigo.getText().trim().equals("")) && (!tfTitulo.getText().trim().equals("")) &&
-        (!tfValor.getText().trim().equals("")) && (!tfQuantidade.getText().trim().equals("")) && 
-        (!recebe.trim().equals("")) && (cbFornecedor.getSelectedIndex() != -1)){
-            Livro livro = new Livro();
+        Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+        if(livro == null){
+            livro = new Livro();
             livro.setCodigo(tfCodigo.getText());
             livro.setTitulo(tfTitulo.getText());
             livro.setValorUnitario(tfValor.getText());
             livro.setQuantidadeEstoque(tfQuantidade.getText());
             livro.setData(tfData.getText());
             livro.setFornecedor(cbFornecedor.getSelectedItem().toString());
-            FormPrincipal.bdlivro.adicionarLivro(livro);
-            JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            if(livro.validaLivro())
+            {
+                FormPrincipal.bdlivro.adicionarLivro(livro);
+                JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                btAtualizar.setEnabled(true);
+                btCadastrar.setEnabled(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para fazer o cadastro!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para fazer o cadastro!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Atenção! Já existe livro cadastrado com este código!", "Informação de Cadastro",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        btAtualizar.setEnabled(false);
+        btCadastrar.setEnabled(true);
         for(int i = 0; i < getContentPane().getComponentCount(); i++)
         {
             Component c = getContentPane().getComponent(i); 
@@ -287,7 +293,7 @@ public class FormLivro extends javax.swing.JFrame {
                 }
             }
         }
-        cbFornecedor.setSelectedIndex(-1);
+        cbFornecedor.setSelectedIndex(0);
         tfCodigo.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
 

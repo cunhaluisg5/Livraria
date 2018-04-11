@@ -82,4 +82,13 @@ public class Livro {
         + "\nQuantidade em estoque: " + quantidadeEstoque + "\nValor unitário: " + valorUnitario
         + "\nData de publicação: " + data + "\n";
     }
+    
+    public boolean validaLivro(){
+        return !codigo.equals("") &&
+               !titulo.equals("") &&
+               !quantidadeEstoque.equals("") &&
+               !valorUnitario.equals("") &&
+               !data.equals("  /  /    ") &&
+               !fornecedor.equals("");
+    }
 }
