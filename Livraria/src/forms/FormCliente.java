@@ -480,6 +480,9 @@ public class FormCliente extends javax.swing.JFrame {
             // Coloquei cada dado no cliente
             if(cliente.validaCliente()){
                 FormPrincipal.bdcliente.inserirCliente(cliente);
+                btAtualizar.setEnabled(true);
+                tfCPF.setEnabled(false);
+                btBuscar.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
@@ -491,7 +494,6 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // Pegar o cpf do campo
         btAtualizar.setEnabled(false);
         String cpf = tfCPF.getText(); 
         String cpfSemMascara = cpf.replace(".", "").replace("-", "");
@@ -500,7 +502,6 @@ public class FormCliente extends javax.swing.JFrame {
             Cliente cliente = FormPrincipal.bdcliente.buscarCliente(cpf);
             if(cliente != null)
             {
-                tfCPF.setText(cliente.getCpf());
                 tfNome.setText(cliente.getNome());
                 tfTelefone.setText(cliente.getTelefone());
                 tfEmail.setText(cliente.getEmail());
@@ -515,12 +516,10 @@ public class FormCliente extends javax.swing.JFrame {
                 tfComplemento.setText(cliente.getEndereco().getComplemento());
                 tfCidade.setText(cliente.getEndereco().getCidade());
                 tfCEP.setText(cliente.getEndereco().getCep());
-                for(int i = 0; i < cbEstado.getItemCount(); i++)
-                {
-                if ( cbEstado.getItemAt(i).equals(cliente.getEndereco().getEstado()) )
-                    cbEstado.setSelectedIndex(i);
-                }
+                cbEstado.setSelectedItem(cliente.getEndereco().getEstado());
                 btAtualizar.setEnabled(true);
+                tfCPF.setEnabled(false);
+                btBuscar.setEnabled(false);
             }else{
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
             }
@@ -534,6 +533,8 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfCPF.setEnabled(true);
+        btBuscar.setEnabled(true);
         for(int i = 0; i < getContentPane().getComponentCount(); i++)
         {
             Component c = getContentPane().getComponent(i); 
