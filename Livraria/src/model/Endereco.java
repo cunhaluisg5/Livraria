@@ -67,4 +67,11 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
+    
+    public boolean validaEndereco(){
+        return !logradouro.equals("") && 
+               !complemento.equals("") && 
+               !cidade.equals("") && 
+               !cep.equals("     -   ");
+    }
 }

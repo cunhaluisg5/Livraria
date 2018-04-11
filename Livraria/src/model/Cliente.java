@@ -83,4 +83,13 @@ public class Cliente {
         + endereco.getComplemento() + "\nCidade: " + endereco.getCidade() + "\nEstado: " 
         + endereco.getEstado() + "\nCEP: " + endereco.getCep();
     }
+    
+    public boolean validaCliente(){
+        return !cpf.equals("   .   .   -  ") && 
+                !nome.equals("") &&
+                !estadoCivil.equals("") &&
+                !telefone.equals("(  )     -    ") &&
+                !email.equals("") &&
+                endereco.validaEndereco();
+    }
 }

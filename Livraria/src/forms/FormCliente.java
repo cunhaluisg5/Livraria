@@ -193,6 +193,7 @@ public class FormCliente extends javax.swing.JFrame {
         rbSolteiro.setBackground(new java.awt.Color(214, 217, 223));
         grEstadoCivil.add(rbSolteiro);
         rbSolteiro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbSolteiro.setSelected(true);
         rbSolteiro.setText("Solteiro");
         rbSolteiro.setName("rbSolteiro"); // NOI18N
 
@@ -310,7 +311,6 @@ public class FormCliente extends javax.swing.JFrame {
         lbEstado.setName("lbEstado"); // NOI18N
 
         cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
-        cbEstado.setSelectedIndex(-1);
         cbEstado.setName("cbEstado"); // NOI18N
 
         lbCEP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -456,46 +456,37 @@ public class FormCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        // Peguei os valores dos campos
-        JRadioButton radio; 
-        String estadoCivil = null;
-        Enumeration jr = grEstadoCivil.getElements(); 
-        while ( jr.hasMoreElements() )
-        {
-            radio = (JRadioButton) jr.nextElement(); 
-            if (radio.isSelected())
-            {
-                estadoCivil = radio.getText();
-            }
-        }
-        String cpfSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
-        String telefoneSemMascara = tfTelefone.getText().replace("(", "").replace(")", "").replace("-", "");
-        String cepSemMascara = tfCEP.getText().replace("-", "");
-        if((!cpfSemMascara.trim().equals("")) && (!tfNome.getText().trim().equals("")) && 
-        (!telefoneSemMascara.trim().equals("")) && (!tfEmail.getText().trim().equals("")) && 
-        (estadoCivil != null) && (!tfLogradouro.getText().trim().equals("")) && 
-        (!tfComplemento.getText().trim().equals("")) && (!tfCidade.getText().trim().equals("")) && 
-        (!cepSemMascara.trim().equals("")) && (cbEstado.getSelectedIndex() != -1)){        
-            Cliente cliente = new Cliente(); // Criei o objeto cliente
+        Cliente cliente = FormPrincipal.bdcliente.buscarCliente(tfCPF.getText());
+        if(cliente == null){ 
+            cliente = new Cliente();
             cliente.setCpf(tfCPF.getText());
             cliente.setNome(tfNome.getText());
             cliente.setTelefone(tfTelefone.getText());
             cliente.setEmail(tfEmail.getText());
-            cliente.setEstadoCivil(estadoCivil);
-
-            Endereco endereco = new Endereco();
-            endereco.setLogradouro(tfLogradouro.getText());
-            endereco.setComplemento(tfComplemento.getText());
-            endereco.setCidade(tfCidade.getText());
-            endereco.setCep(tfCEP.getText());
-            endereco.setEstado(cbEstado.getSelectedItem().toString());
-            cliente.setEndereco(endereco);
+            JRadioButton radio;
+            String str;
+            Enumeration jr = grEstadoCivil.getElements();
+            while (jr.hasMoreElements()) {
+                radio = (JRadioButton) jr.nextElement();
+                if (radio.isSelected()) {
+                    cliente.setEstadoCivil(radio.getText());
+                }
+            }
+            cliente.getEndereco().setLogradouro(tfLogradouro.getText());
+            cliente.getEndereco().setComplemento(tfComplemento.getText());
+            cliente.getEndereco().setCidade(tfCidade.getText());
+            cliente.getEndereco().setCep(tfCEP.getText());
+            cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
             // Coloquei cada dado no cliente
-            FormPrincipal.bdcliente.inserirCliente(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para cadastrar!", "Informações de Cadastro", JOptionPane.WARNING_MESSAGE);
+            if(cliente.validaCliente()){
+                FormPrincipal.bdcliente.inserirCliente(cliente);
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para cadastrar!", "Informações de Cadastro", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Atenção! Já existe cliente cadastrado com este CPF!", "Informação de Cadastro",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
