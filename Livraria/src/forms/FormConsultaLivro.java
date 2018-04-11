@@ -102,6 +102,11 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         btExcluir.setText("Excluir");
         btExcluir.setEnabled(false);
         btExcluir.setName("btExcluir"); // NOI18N
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icSair.png"))); // NOI18N
@@ -217,6 +222,24 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         new FormLivro().setVisible(true);
     }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        int recebe = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o livro?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+        if(recebe == 0)
+        {
+            Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+            if(livro != null)
+            {
+                FormPrincipal.bdlivro.removerLivro(livro.getCodigo());
+                JOptionPane.showMessageDialog(null, "Livro excluído com sucesso!", "Informação de Exclusão", JOptionPane.INFORMATION_MESSAGE);
+                btEditar.setEnabled(false);
+                btExcluir.setEnabled(false);
+                taInfo.setText("");
+                tfCodigo.setText("");
+                tfCodigo.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
