@@ -18,6 +18,16 @@ public class FormConsultaLivro extends javax.swing.JFrame {
 
     int cont = 0; //Em 1 o "Buscar Todos" está ativado. Em 0 o "Buscar Todos" está desativado
     
+    public static Livro liv = null;
+    
+    public static Livro getLivro(){
+        return liv;
+    }
+    
+    public static void setLivro(Livro liv){
+        FormConsultaLivro.liv = liv;
+    }
+    
     public FormConsultaLivro() {
         initComponents();
         btBuscar.setBackground(Color.white);
@@ -49,9 +59,15 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Livros em Acervo");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(214, 217, 223));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(1));
         jPanel1.setPreferredSize(new java.awt.Dimension(680, 386));
 
         lbCodigo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -82,7 +98,7 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         taInfo.setEditable(false);
         taInfo.setColumns(20);
         taInfo.setRows(5);
-        taInfo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        taInfo.setBorder(new javax.swing.border.SoftBevelBorder(1));
         taInfo.setName("taInfo"); // NOI18N
         jScrollPane1.setViewportView(taInfo);
 
@@ -176,6 +192,7 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        liv = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -227,6 +244,7 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         {
             FormLivro.setLivro(livro);
             new FormLivro().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btEditarActionPerformed
 
@@ -247,6 +265,15 @@ public class FormConsultaLivro extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(liv != null)
+        {
+            tfCodigo.setText(liv.getCodigo());
+            btEditar.setEnabled(true);
+            btExcluir.setEnabled(true);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

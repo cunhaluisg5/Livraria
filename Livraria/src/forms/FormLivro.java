@@ -319,6 +319,12 @@ public class FormLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        if(li != null)
+        {
+            FormConsultaLivro.setLivro(li);
+            li = null;
+            new FormConsultaLivro().setVisible(true);
+        }
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
