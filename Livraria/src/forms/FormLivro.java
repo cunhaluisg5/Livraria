@@ -77,6 +77,7 @@ public class FormLivro extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(1));
         jPanel1.setPreferredSize(new java.awt.Dimension(680, 386));
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
