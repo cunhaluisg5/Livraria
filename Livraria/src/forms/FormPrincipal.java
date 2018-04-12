@@ -63,9 +63,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(1));
         jPanel2.setEnabled(false);
         jPanel2.setLayout(new java.awt.BorderLayout());
 
@@ -97,6 +98,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         JMenuCadastros.add(jSeparator1);
 
         JMenuItemSair.setText("Sair");
+        JMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemSairActionPerformed(evt);
+            }
+        });
         JMenuCadastros.add(JMenuItemSair);
 
         jMenuBar1.add(JMenuCadastros);
@@ -192,6 +198,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void JMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemProdutosActionPerformed
         new FormConsultaLivro().setVisible(true);
     }//GEN-LAST:event_JMenuItemProdutosActionPerformed
+
+    private void JMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JMenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments
