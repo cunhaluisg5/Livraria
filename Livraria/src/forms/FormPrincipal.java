@@ -78,6 +78,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         JMenuCadastros.setText("Cadastros");
 
+        JMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserirCliente.png"))); // NOI18N
         JMenuItemCliente.setText("Cliente");
         JMenuItemCliente.setName("JMenuItemCliente"); // NOI18N
         JMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +88,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         JMenuCadastros.add(JMenuItemCliente);
 
+        JMenuItemProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/livros.png"))); // NOI18N
         JMenuItemProduto.setText("Produto");
         JMenuItemProduto.setName("JMenuItemProduto"); // NOI18N
         JMenuItemProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +99,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         JMenuCadastros.add(JMenuItemProduto);
         JMenuCadastros.add(jSeparator1);
 
+        JMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
         JMenuItemSair.setText("Sair");
         JMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +112,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         JMenuConsultas.setText("Consultas");
 
+        JMenuItemClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserirCliente.png"))); // NOI18N
         JMenuItemClientes.setText("Clientes");
         JMenuItemClientes.setName("JMenuItemClientes"); // NOI18N
         JMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +122,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         JMenuConsultas.add(JMenuItemClientes);
 
+        JMenuItemProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/livros.png"))); // NOI18N
         JMenuItemProdutos.setText("Produtos");
         JMenuItemProdutos.setName("JMenuItemProdutos"); // NOI18N
         JMenuItemProdutos.addActionListener(new java.awt.event.ActionListener() {
