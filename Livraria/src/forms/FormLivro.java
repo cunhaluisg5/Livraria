@@ -18,9 +18,16 @@ import model.Livro;
  */
 public class FormLivro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormLivro
-     */
+    public static Livro li = null;
+    
+    public static Livro getLivro(){
+        return li;
+    }
+    
+    public static void setLivro(Livro li){
+        FormLivro.li = li;
+    }
+    
     public FormLivro() {
         initComponents();
     }
@@ -59,9 +66,15 @@ public class FormLivro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Livros (Acervo)");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(214, 217, 223));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(1));
         jPanel1.setPreferredSize(new java.awt.Dimension(680, 386));
 
         jToolBar1.setRollover(true);
@@ -69,7 +82,7 @@ public class FormLivro extends javax.swing.JFrame {
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icCadlivro.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
-        btCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(0));
         btCadastrar.setFocusable(false);
         btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCadastrar.setMaximumSize(new java.awt.Dimension(80, 73));
@@ -88,7 +101,7 @@ public class FormLivro extends javax.swing.JFrame {
         btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icAtualizar.png"))); // NOI18N
         btAtualizar.setText("Atualizar");
-        btAtualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btAtualizar.setBorder(new javax.swing.border.SoftBevelBorder(0));
         btAtualizar.setEnabled(false);
         btAtualizar.setFocusable(false);
         btAtualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -108,7 +121,7 @@ public class FormLivro extends javax.swing.JFrame {
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icCancelar.png"))); // NOI18N
         btCancelar.setText("Cancelar");
-        btCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btCancelar.setBorder(new javax.swing.border.SoftBevelBorder(0));
         btCancelar.setFocusable(false);
         btCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCancelar.setMaximumSize(new java.awt.Dimension(80, 73));
@@ -127,7 +140,7 @@ public class FormLivro extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icSair.png"))); // NOI18N
         btSair.setText("Sair");
-        btSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btSair.setBorder(new javax.swing.border.SoftBevelBorder(0));
         btSair.setFocusable(false);
         btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btSair.setMaximumSize(new java.awt.Dimension(80, 73));
@@ -264,6 +277,7 @@ public class FormLivro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
                 btAtualizar.setEnabled(true);
                 btCadastrar.setEnabled(false);
+                tfCodigo.setEnabled(false);
             }else{
                 JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos para fazer o cadastro!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
             }
@@ -299,6 +313,7 @@ public class FormLivro extends javax.swing.JFrame {
             }
         }
         cbFornecedor.setSelectedIndex(0);
+        tfCodigo.setEnabled(true);
         tfCodigo.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
 
@@ -320,6 +335,23 @@ public class FormLivro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Atualização de Livro", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btAtualizarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(li != null)
+        {
+            btAtualizar.setEnabled(true);
+            btSair.setEnabled(true);
+            btCancelar.setEnabled(false);
+            btCadastrar.setEnabled(false);;
+            tfCodigo.setEnabled(false);
+            tfCodigo.setText(li.getCodigo());
+            tfData.setText(li.getData());
+            tfQuantidade.setText(li.getQuantidadeEstoque());
+            tfTitulo.setText(li.getTitulo());
+            tfValor.setText(li.getValorUnitario());
+            cbFornecedor.setSelectedItem(li.getFornecedor());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

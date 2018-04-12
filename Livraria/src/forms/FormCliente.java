@@ -80,9 +80,10 @@ public class FormCliente extends javax.swing.JFrame {
         setTitle("Cadastro de Clientes");
         setPreferredSize(new java.awt.Dimension(680, 386));
         setResizable(false);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(214, 217, 223));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(1));
 
         lbCPF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCPF.setText("CPF:");
@@ -187,7 +188,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfEmail.setName("tfEmail"); // NOI18N
 
         jpEstadoCivil.setBackground(new java.awt.Color(214, 217, 223));
-        jpEstadoCivil.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jpEstadoCivil.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil", 0, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jpEstadoCivil.setName("jpEstadoCivil"); // NOI18N
 
         rbSolteiro.setBackground(new java.awt.Color(214, 217, 223));

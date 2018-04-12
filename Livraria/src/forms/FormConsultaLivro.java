@@ -181,6 +181,8 @@ public class FormConsultaLivro extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         taInfo.setText("");
+        btEditar.setEnabled(false);
+        btExcluir.setEnabled(false);
         if(cont == 1){
             List<Livro> livro = FormPrincipal.bdlivro.todosLivros();
             if(!livro.isEmpty()){
@@ -220,7 +222,12 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_boBuscarMouseClicked
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        new FormLivro().setVisible(true);
+        Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+        if(livro != null)
+        {
+            FormLivro.setLivro(livro);
+            new FormLivro().setVisible(true);
+        }
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
