@@ -80,10 +80,9 @@ public class FormCliente extends javax.swing.JFrame {
         setTitle("Cadastro de Clientes");
         setPreferredSize(new java.awt.Dimension(680, 386));
         setResizable(false);
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(214, 217, 223));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(1));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         lbCPF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCPF.setText("CPF:");
@@ -106,6 +105,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbNome.setName("lbNome"); // NOI18N
 
         tfNome.setName("tfNome"); // NOI18N
+        tfNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNomeKeyTyped(evt);
+            }
+        });
 
         btBuscar.setBackground(new java.awt.Color(255, 255, 255));
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -188,7 +192,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfEmail.setName("tfEmail"); // NOI18N
 
         jpEstadoCivil.setBackground(new java.awt.Color(214, 217, 223));
-        jpEstadoCivil.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil", 0, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jpEstadoCivil.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jpEstadoCivil.setName("jpEstadoCivil"); // NOI18N
 
         rbSolteiro.setBackground(new java.awt.Color(214, 217, 223));
@@ -654,6 +658,14 @@ public class FormCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Você alterou o CPF!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btAtualizarActionPerformed
+
+    private void tfNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNomeKeyTyped
+        String caracteres = "0987654321";
+        if(caracteres.contains(evt.getKeyChar() + ""))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfNomeKeyTyped
 
     /**
      * @param args the command line arguments
