@@ -65,7 +65,7 @@
                       <Component id="lbFornecedor" min="-2" max="-2" attributes="0"/>
                       <Component id="cbFornecedor" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -306,8 +306,12 @@
         <Component class="javax.swing.JComboBox" name="cbFornecedor">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="5">
                 <StringItem index="0" value="Editora Melhoramentos"/>
+                <StringItem index="1" value="F&#xe1;brica de Letras"/>
+                <StringItem index="2" value="Editora Cores e Palavras"/>
+                <StringItem index="3" value="Inform&#xe1;tica Cient&#xed;fica"/>
+                <StringItem index="4" value="Ci&#xea;ncia Moderna "/>
               </StringArray>
             </Property>
             <Property name="name" type="java.lang.String" value="cbFornecedor" noResource="true"/>

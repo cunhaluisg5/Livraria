@@ -20,14 +20,6 @@ public class FormLivro extends javax.swing.JFrame {
 
     public static Livro li = null;
     
-    public static Livro getLivro(){
-        return li;
-    }
-    
-    public static void setLivro(Livro li){
-        FormLivro.li = li;
-    }
-    
     public FormLivro() {
         initComponents();
     }
@@ -171,7 +163,7 @@ public class FormLivro extends javax.swing.JFrame {
         lbFornecedor.setText("Fornecedor:");
         lbFornecedor.setName("lbFornecedor"); // NOI18N
 
-        cbFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editora Melhoramentos" }));
+        cbFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editora Melhoramentos", "Fábrica de Letras", "Editora Cores e Palavras", "Informática Científica", "Ciência Moderna " }));
         cbFornecedor.setName("cbFornecedor"); // NOI18N
 
         lbValor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -222,7 +214,7 @@ public class FormLivro extends javax.swing.JFrame {
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbFornecedor)
                     .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,13 +264,13 @@ public class FormLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+        Livro livro = FormPrincipal.bdlivro.buscarLivro(Integer.parseInt(tfCodigo.getText()));
         if(livro == null){
             livro = new Livro();
-            livro.setCodigo(tfCodigo.getText());
+            livro.setCodigo(Integer.parseInt(tfCodigo.getText()));
             livro.setTitulo(tfTitulo.getText());
-            livro.setValorUnitario(tfValor.getText());
-            livro.setQuantidadeEstoque(tfQuantidade.getText());
+            livro.setValorUnitario(Float.parseFloat(tfValor.getText()));
+            livro.setQuantidadeEstoque(Integer.parseInt(tfQuantidade.getText()));
             livro.setData(tfData.getText());
             livro.setFornecedor(cbFornecedor.getSelectedItem().toString());
             if(livro.validaLivro())
@@ -330,9 +322,7 @@ public class FormLivro extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         if(li != null)
         {
-            FormConsultaLivro.setLivro(li);
             li = null;
-            new FormConsultaLivro().setVisible(true);
         }
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
@@ -341,12 +331,12 @@ public class FormLivro extends javax.swing.JFrame {
         int recebe = JOptionPane.showConfirmDialog(null, "Deseja mesmo atualizar o livro?", "Atualização de Livro", JOptionPane.YES_NO_OPTION);
         if(recebe == 0)
         {
-            Livro livro = FormPrincipal.bdlivro.buscarLivro(tfCodigo.getText());
+            Livro livro = FormPrincipal.bdlivro.buscarLivro(Integer.parseInt(tfCodigo.getText()));
             livro.setData(tfData.getText());
             livro.setFornecedor(cbFornecedor.getSelectedItem().toString());
-            livro.setQuantidadeEstoque(tfQuantidade.getText());
+            livro.setQuantidadeEstoque(Integer.parseInt(tfQuantidade.getText()));
             livro.setTitulo(tfTitulo.getText());
-            livro.setValorUnitario(tfValor.getText());
+            livro.setValorUnitario(Float.parseFloat(tfValor.getText()));
             FormPrincipal.bdlivro.alterarLivro(livro);
             JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!", "Atualização de Livro", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -360,11 +350,11 @@ public class FormLivro extends javax.swing.JFrame {
             btCancelar.setEnabled(false);
             btCadastrar.setEnabled(false);;
             tfCodigo.setEnabled(false);
-            tfCodigo.setText(li.getCodigo());
+            tfCodigo.setText(Integer.toString(li.getCodigo()));
             tfData.setText(li.getData());
-            tfQuantidade.setText(li.getQuantidadeEstoque());
+            tfQuantidade.setText(Integer.toString(li.getQuantidadeEstoque()));
             tfTitulo.setText(li.getTitulo());
-            tfValor.setText(li.getValorUnitario());
+            tfValor.setText(Float.toString(li.getValorUnitario()));
             cbFornecedor.setSelectedItem(li.getFornecedor());
         }
     }//GEN-LAST:event_formWindowOpened

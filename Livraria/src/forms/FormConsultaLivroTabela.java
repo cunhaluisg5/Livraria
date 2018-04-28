@@ -9,16 +9,20 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Livro;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class FormConsultaLivro extends javax.swing.JFrame {
+public class FormConsultaLivroTabela extends javax.swing.JFrame {
     
-    public FormConsultaLivro() {
+    DefaultTableModel modelo  = null;
+    
+    public FormConsultaLivroTabela() {
         initComponents();
+        modelo = (DefaultTableModel) tbInfo.getModel();
         btBuscar.setBackground(Color.white);
         btEditar.setBackground(Color.white);
         btExcluir.setBackground(Color.white);
@@ -39,11 +43,11 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         tfCodigo = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         boBuscar = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taInfo = new javax.swing.JTextArea();
         btEditar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbInfo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Livros em Acervo");
@@ -78,13 +82,6 @@ public class FormConsultaLivro extends javax.swing.JFrame {
             }
         });
 
-        taInfo.setEditable(false);
-        taInfo.setColumns(20);
-        taInfo.setRows(5);
-        taInfo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        taInfo.setName("taInfo"); // NOI18N
-        jScrollPane1.setViewportView(taInfo);
-
         btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icAtualizar.png"))); // NOI18N
         btEditar.setText("Editar");
@@ -117,34 +114,80 @@ public class FormConsultaLivro extends javax.swing.JFrame {
             }
         });
 
+        tbInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Título", "Fornecedor", "Estoque", "Valor", "Data"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbInfo.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tbInfo.setName("tbInfo"); // NOI18N
+        tbInfo.getTableHeader().setReorderingAllowed(false);
+        tbInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbInfoMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbInfo);
+        if (tbInfo.getColumnModel().getColumnCount() > 0) {
+            tbInfo.getColumnModel().getColumn(0).setResizable(false);
+            tbInfo.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tbInfo.getColumnModel().getColumn(1).setResizable(false);
+            tbInfo.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tbInfo.getColumnModel().getColumn(2).setResizable(false);
+            tbInfo.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tbInfo.getColumnModel().getColumn(3).setResizable(false);
+            tbInfo.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tbInfo.getColumnModel().getColumn(4).setResizable(false);
+            tbInfo.getColumnModel().getColumn(4).setPreferredWidth(80);
+            tbInfo.getColumnModel().getColumn(5).setResizable(false);
+            tbInfo.getColumnModel().getColumn(5).setPreferredWidth(80);
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbCodigo)
-                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77)
-                        .addComponent(btBuscar)
-                        .addGap(80, 80, 80)
-                        .addComponent(boBuscar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbCodigo)
+                                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(54, 54, 54)
+                                .addComponent(btBuscar)
+                                .addGap(185, 185, 185)
+                                .addComponent(boBuscar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101)
+                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,9 +201,9 @@ public class FormConsultaLivro extends javax.swing.JFrame {
                         .addComponent(lbCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +213,7 @@ public class FormConsultaLivro extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(697, 427));
+        setSize(new java.awt.Dimension(704, 640));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,15 +222,16 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        taInfo.setText("");
+        limparTabela();
         btEditar.setEnabled(false);
         btExcluir.setEnabled(false);
         if(boBuscar.isSelected()){
-            List<Livro> cad = new ArrayList<Livro>();
+            List<Livro> cad = new ArrayList<Livro>(); 
             cad = FormPrincipal.bdlivro.todosLivros();
             if(!cad.isEmpty()){
-                for(Livro livro : cad){
-                    taInfo.append(livro.toString());
+                for(Livro livro: cad){
+                    inserirTabela(livro);
+                    tbInfo.setEnabled(false);
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Não existem livros cadastrados!", "Informação de Cadastro", JOptionPane.WARNING_MESSAGE);
@@ -197,8 +241,8 @@ public class FormConsultaLivro extends javax.swing.JFrame {
             {
                 Livro livro = FormPrincipal.bdlivro.buscarLivro(Integer.parseInt(tfCodigo.getText()));
                 if(livro != null){
-                    taInfo.setText(livro.toString());
-                    btEditar.setEnabled(true);
+                    inserirTabela(livro);
+                    tbInfo.setEnabled(true);
                     btExcluir.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "Não existe livro cadastrado no código informado!", "Informação de Cadastro", JOptionPane.ERROR_MESSAGE);
@@ -210,13 +254,10 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        Livro livro = FormPrincipal.bdlivro.buscarLivro(Integer.parseInt(tfCodigo.getText()));
-        if(livro != null)
-        {
+            Livro livro = getLivro();
             FormLivro.li = livro;
             new FormLivro().setVisible(true);
-            this.setVisible(false);
-        }
+            this.dispose();
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
@@ -230,7 +271,7 @@ public class FormConsultaLivro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Livro excluído com sucesso!", "Informação de Exclusão", JOptionPane.INFORMATION_MESSAGE);
                 btEditar.setEnabled(false);
                 btExcluir.setEnabled(false);
-                taInfo.setText("");
+                limparTabela();
                 tfCodigo.setText("");
                 tfCodigo.requestFocus();
             }
@@ -245,9 +286,42 @@ public class FormConsultaLivro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_boBuscarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void tbInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInfoMouseClicked
+        if((tbInfo.isCellSelected(0, 0) || tbInfo.isCellSelected(0, 1) ||
+           tbInfo.isCellSelected(0, 2) || tbInfo.isCellSelected(0, 3) ||
+           tbInfo.isCellSelected(0, 4) || tbInfo.isCellSelected(0, 5)))
+        {
+            btEditar.setEnabled(true);
+        }else{
+            btEditar.setEnabled(false);
+        }
+    }//GEN-LAST:event_tbInfoMouseClicked
+
+    private void limparTabela(){
+        for(int i = tbInfo.getRowCount()-1; i >= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void inserirTabela(Livro livro){
+        modelo.addRow(new Object[]{livro.getCodigo(), livro.getTitulo(), livro.getFornecedor(), 
+        livro.getQuantidadeEstoque(), livro.getValorUnitario(), livro.getData()});
+    }
+    
+    private Livro getLivro(){
+        int linha = tbInfo.getSelectedRow();
+        Livro livro = new Livro();
+        
+        livro.setCodigo((Integer) tbInfo.getModel().getValueAt(linha, 0));
+        livro.setTitulo((String) tbInfo.getModel().getValueAt(linha, 1));
+        livro.setFornecedor((String) tbInfo.getModel().getValueAt(linha, 2));
+        livro.setQuantidadeEstoque((Integer) tbInfo.getModel().getValueAt(linha, 3));
+        livro.setValorUnitario((float) tbInfo.getModel().getValueAt(linha, 4));
+        livro.setData((String) tbInfo.getModel().getValueAt(linha, 5));
+        
+        return livro;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -262,20 +336,21 @@ public class FormConsultaLivro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormConsultaLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultaLivroTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormConsultaLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultaLivroTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormConsultaLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultaLivroTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormConsultaLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultaLivroTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormConsultaLivro().setVisible(true);
+                new FormConsultaLivroTabela().setVisible(true);
             }
         });
     }
@@ -287,9 +362,9 @@ public class FormConsultaLivro extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbCodigo;
-    private javax.swing.JTextArea taInfo;
+    private javax.swing.JTable tbInfo;
     private javax.swing.JTextField tfCodigo;
     // End of variables declaration//GEN-END:variables
 }

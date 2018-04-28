@@ -42,7 +42,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         JMenuItemSair = new javax.swing.JMenuItem();
         JMenuConsultas = new javax.swing.JMenu();
         JMenuItemClientes = new javax.swing.JMenuItem();
-        JMenuItemProdutos = new javax.swing.JMenuItem();
+        JMenuLivros = new javax.swing.JMenu();
+        JMenuItemLivrosArea = new javax.swing.JMenuItem();
+        JMenuItemLivrosTabela = new javax.swing.JMenuItem();
         JMenuCompras = new javax.swing.JMenu();
         JMenuItemDia = new javax.swing.JMenuItem();
         JMenuItemMes = new javax.swing.JMenuItem();
@@ -63,10 +65,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(1));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel2.setEnabled(false);
         jPanel2.setLayout(new java.awt.BorderLayout());
 
@@ -122,15 +123,29 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         JMenuConsultas.add(JMenuItemClientes);
 
-        JMenuItemProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/livros.png"))); // NOI18N
-        JMenuItemProdutos.setText("Produtos");
-        JMenuItemProdutos.setName("JMenuItemProdutos"); // NOI18N
-        JMenuItemProdutos.addActionListener(new java.awt.event.ActionListener() {
+        JMenuLivros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/livros.png"))); // NOI18N
+        JMenuLivros.setText("Livros");
+        JMenuLivros.setName("JMenuLivros"); // NOI18N
+
+        JMenuItemLivrosArea.setText("Livros com Área");
+        JMenuItemLivrosArea.setName("JMenuItemLivrosArea"); // NOI18N
+        JMenuItemLivrosArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMenuItemProdutosActionPerformed(evt);
+                JMenuItemLivrosAreaActionPerformed(evt);
             }
         });
-        JMenuConsultas.add(JMenuItemProdutos);
+        JMenuLivros.add(JMenuItemLivrosArea);
+
+        JMenuItemLivrosTabela.setText("Livros com Tabela");
+        JMenuItemLivrosTabela.setName("JMenuItemLivrosTabela"); // NOI18N
+        JMenuItemLivrosTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemLivrosTabelaActionPerformed(evt);
+            }
+        });
+        JMenuLivros.add(JMenuItemLivrosTabela);
+
+        JMenuConsultas.add(JMenuLivros);
 
         JMenuCompras.setText("Compras");
         JMenuCompras.setName("JMenuCompras"); // NOI18N
@@ -200,13 +215,17 @@ public class FormPrincipal extends javax.swing.JFrame {
         new FormLivro().setVisible(true);
     }//GEN-LAST:event_JMenuItemProdutoActionPerformed
 
-    private void JMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemProdutosActionPerformed
-        new FormConsultaLivro().setVisible(true);
-    }//GEN-LAST:event_JMenuItemProdutosActionPerformed
-
     private void JMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_JMenuItemSairActionPerformed
+
+    private void JMenuItemLivrosAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemLivrosAreaActionPerformed
+        new FormConsultaLivro().setVisible(true);
+    }//GEN-LAST:event_JMenuItemLivrosAreaActionPerformed
+
+    private void JMenuItemLivrosTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemLivrosTabelaActionPerformed
+        new FormConsultaLivroTabela().setVisible(true);
+    }//GEN-LAST:event_JMenuItemLivrosTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,12 +272,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemClientes;
     private javax.swing.JMenuItem JMenuItemDia;
     private javax.swing.JMenuItem JMenuItemEmitirNF;
+    private javax.swing.JMenuItem JMenuItemLivrosArea;
+    private javax.swing.JMenuItem JMenuItemLivrosTabela;
     private javax.swing.JMenuItem JMenuItemMes;
     private javax.swing.JMenuItem JMenuItemNovaVenda;
     private javax.swing.JMenuItem JMenuItemProduto;
-    private javax.swing.JMenuItem JMenuItemProdutos;
     private javax.swing.JMenuItem JMenuItemSair;
     private javax.swing.JMenuItem JMenuItemSobre;
+    private javax.swing.JMenu JMenuLivros;
     private javax.swing.JMenu JMenuSuporte;
     private javax.swing.JMenu JMenuVendas;
     private javax.swing.JLabel jLabel1;

@@ -65,18 +65,35 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemClientesActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemProdutos">
+            <Menu class="javax.swing.JMenu" name="JMenuLivros">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones/livros.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Produtos"/>
-                <Property name="name" type="java.lang.String" value="JMenuItemProdutos" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Livros"/>
+                <Property name="name" type="java.lang.String" value="JMenuLivros" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemProdutosActionPerformed"/>
-              </Events>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="JMenuItemLivrosArea">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Livros com &#xc1;rea"/>
+                    <Property name="name" type="java.lang.String" value="JMenuItemLivrosArea" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemLivrosAreaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JMenuItemLivrosTabela">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Livros com Tabela"/>
+                    <Property name="name" type="java.lang.String" value="JMenuItemLivrosTabela" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemLivrosTabelaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <Menu class="javax.swing.JMenu" name="JMenuCompras">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Compras"/>

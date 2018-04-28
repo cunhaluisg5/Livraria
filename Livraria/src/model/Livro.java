@@ -10,17 +10,17 @@ package model;
  * @author Luís Gustavo
  */
 public class Livro {
-    private String codigo;
+    private int codigo;
     private String titulo;
     private String fornecedor;
-    private String quantidadeEstoque;
-    private String valorUnitario;
+    private int quantidadeEstoque;
+    private float valorUnitario;
     private String data;
 
     public Livro() {
     }
 
-    public Livro(String codigo, String titulo, String fornecedor, String quantidadeEstoque, String valorUnitario, String data) {
+    public Livro(int codigo, String titulo, String fornecedor, int quantidadeEstoque, float valorUnitario, String data) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.fornecedor = fornecedor;
@@ -29,11 +29,11 @@ public class Livro {
         this.data = data;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -53,19 +53,19 @@ public class Livro {
         this.fornecedor = fornecedor;
     }
 
-    public String getQuantidadeEstoque() {
+    public int getQuantidadeEstoque() {
         return quantidadeEstoque;
     }
 
-    public void setQuantidadeEstoque(String quantidadeEstoque) {
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public String getValorUnitario() {
+    public float getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(String valorUnitario) {
+    public void setValorUnitario(float valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 
@@ -84,10 +84,10 @@ public class Livro {
     }
     
     public boolean validaLivro(){
-        return !codigo.equals("") &&
+        return codigo > 0 &&
                !titulo.equals("") &&
-               !quantidadeEstoque.equals("") &&
-               !valorUnitario.equals("") &&
+               quantidadeEstoque > 0 &&
+               valorUnitario > 0 &&
                !data.equals("  /  /    ") &&
                !fornecedor.equals("");
     }
