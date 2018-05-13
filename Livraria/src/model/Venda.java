@@ -54,6 +54,10 @@ public class Venda {
         }
     }
     
+    public List<Item> todosItens(){
+        return lista;
+    }
+    
     public float calcularValorTotal(){
         float soma = 0;
         for(Item item : lista){

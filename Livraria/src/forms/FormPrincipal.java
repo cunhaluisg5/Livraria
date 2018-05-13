@@ -7,6 +7,7 @@ package forms;
 
 import dao.ClienteDao;
 import dao.LivroDao;
+import dao.VendaDao;
 
 /**
  *
@@ -16,10 +17,12 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     public static ClienteDao bdcliente = null;
     public static LivroDao bdlivro = null;
+    public static VendaDao bdvenda = null;
     
     public FormPrincipal() {
         bdcliente = new ClienteDao();
         bdlivro = new LivroDao();
+        bdvenda = new VendaDao();
         initComponents();
     }
 
@@ -171,6 +174,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         JMenuItemNovaVenda.setText("Nova Venda");
         JMenuItemNovaVenda.setName("JMenuItemNovaVenda"); // NOI18N
+        JMenuItemNovaVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemNovaVendaActionPerformed(evt);
+            }
+        });
         JMenuVendas.add(JMenuItemNovaVenda);
 
         JMenuItemEmitirNF.setText("Emitir N.F.");
@@ -226,6 +234,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void JMenuItemLivrosTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemLivrosTabelaActionPerformed
         new FormConsultaLivroTabela().setVisible(true);
     }//GEN-LAST:event_JMenuItemLivrosTabelaActionPerformed
+
+    private void JMenuItemNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemNovaVendaActionPerformed
+        new FormVenda().setVisible(true);
+    }//GEN-LAST:event_JMenuItemNovaVendaActionPerformed
 
     /**
      * @param args the command line arguments
