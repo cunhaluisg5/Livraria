@@ -142,6 +142,9 @@
                 <Property name="text" type="java.lang.String" value="Emitir N.F."/>
                 <Property name="name" type="java.lang.String" value="JMenuItemEmitirNF" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemEmitirNFActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

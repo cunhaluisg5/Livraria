@@ -5,15 +5,17 @@
  */
 package forms;
 
+import javax.swing.JOptionPane;
+import model.Venda;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormNotaFiscal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormNotaFiscal
-     */
+    Venda venda; 
+    
     public FormNotaFiscal() {
         initComponents();
     }
@@ -56,6 +58,11 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         btBuscar.setMaximumSize(new java.awt.Dimension(123, 41));
         btBuscar.setName("btBuscar"); // NOI18N
         btBuscar.setPreferredSize(new java.awt.Dimension(123, 41));
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         taDados.setEditable(false);
         taDados.setColumns(20);
@@ -134,6 +141,19 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(608, 511));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        try{
+            venda = FormPrincipal.bdvenda.buscarVenda(Integer.parseInt(tfVenda.getText()));
+            if(venda != null){
+                taDados.setText(venda.toString());
+            }else{
+                JOptionPane.showMessageDialog(null, "Venda não encontrada!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Informe um número!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+        }        
+    }//GEN-LAST:event_btBuscarActionPerformed
 
     /**
      * @param args the command line arguments
