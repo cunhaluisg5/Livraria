@@ -168,6 +168,7 @@
               <Image iconType="3" name="/icones/icNotaFiscal.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Emitir N.F."/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btEmitirNF" noResource="true"/>
           </Properties>
         </Component>
@@ -188,6 +189,9 @@
               <Dimension value="[123, 41]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btSair">
           <Properties>

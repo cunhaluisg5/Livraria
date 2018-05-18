@@ -74,6 +74,7 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         btEmitirNF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEmitirNF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icNotaFiscal.png"))); // NOI18N
         btEmitirNF.setText("Emitir N.F.");
+        btEmitirNF.setEnabled(false);
         btEmitirNF.setName("btEmitirNF"); // NOI18N
 
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -82,6 +83,11 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         btCancelar.setMaximumSize(new java.awt.Dimension(123, 41));
         btCancelar.setName("btCancelar"); // NOI18N
         btCancelar.setPreferredSize(new java.awt.Dimension(123, 41));
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icSair.png"))); // NOI18N
@@ -152,6 +158,7 @@ public class FormNotaFiscal extends javax.swing.JFrame {
             venda = FormPrincipal.bdvenda.buscarVenda(Integer.parseInt(tfVenda.getText()));
             if(venda != null){
                 taDados.setText(venda.toString());
+                btEmitirNF.setEnabled(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Venda não encontrada!", "Atenção!", JOptionPane.ERROR_MESSAGE);
             }
@@ -163,6 +170,13 @@ public class FormNotaFiscal extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        tfVenda.setText("");
+        taDados.setText("");
+        btEmitirNF.setEnabled(false);
+        tfVenda.requestFocus();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
      * @param args the command line arguments
