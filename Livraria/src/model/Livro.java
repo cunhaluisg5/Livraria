@@ -77,10 +77,16 @@ public class Livro {
         this.data = data;
     }
     
+    @Override
     public String toString(){
-        return "Código: " + codigo + "\nTítulo: " + titulo + "\nFornecedor: " + fornecedor
-        + "\nQuantidade em estoque: " + quantidadeEstoque + "\nValor unitário: " + valorUnitario
-        + "\nData de publicação: " + data + "\n";
+        String str = "";
+        str += "\nCódigo: " + codigo;
+        str += "\nTítulo: " + titulo;
+        str += "\nFornecedor: " + fornecedor;
+        str += "\nQuantidade em estoque: " + quantidadeEstoque;
+        str += "\nValor unitário: " + valorUnitario;
+        str += "\nData de publicação: " + data;
+        return str;
     }
     
     public boolean validaLivro(){

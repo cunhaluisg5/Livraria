@@ -5,6 +5,12 @@
  */
 package forms;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Venda;
 
@@ -76,6 +82,11 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         btEmitirNF.setText("Emitir N.F.");
         btEmitirNF.setEnabled(false);
         btEmitirNF.setName("btEmitirNF"); // NOI18N
+        btEmitirNF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEmitirNFActionPerformed(evt);
+            }
+        });
 
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icCancelar.png"))); // NOI18N
@@ -177,6 +188,27 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         btEmitirNF.setEnabled(false);
         tfVenda.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btEmitirNFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmitirNFActionPerformed
+        File arq = new File("src\\Notas\\NotaFiscal_" + Integer.toString(venda.getNumero()) + ".txt");
+        if(!arq.exists()){
+            try {
+                arq.createNewFile();
+                FileWriter fw = new FileWriter(arq);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String str[] = taDados.getText().split("\n");
+                for(String linha : str){
+                    bw.write(linha);
+                    bw.newLine();
+                }
+                bw.close();
+                fw.close();
+                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(FormNotaFiscal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btEmitirNFActionPerformed
 
     /**
      * @param args the command line arguments

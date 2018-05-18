@@ -77,11 +77,20 @@ public class Cliente {
         this.endereco = endereco;
     }
     
+    @Override
     public String toString(){
-        return "CPF: " + cpf + "\nNome: " + nome + "\nEstado civil: " + estadoCivil + "\nTelefone: " 
-        + telefone + "\nEmail: " + email + "\nLogradouro: " + endereco.getLogradouro() + "\nComplemento: " 
-        + endereco.getComplemento() + "\nCidade: " + endereco.getCidade() + "\nEstado: " 
-        + endereco.getEstado() + "\nCEP: " + endereco.getCep();
+        String str = "";
+        str += "\nCPF: " + cpf;
+        str += "\nNome: " + nome;
+        str += "\nEstado civil: " + estadoCivil;
+        str += "\nTelefone: " + telefone;
+        str += "\nEmail: " + email;
+        str += "\nLogradouro: " + endereco.getLogradouro();
+        str += "\nComplemento: " + endereco.getComplemento();
+        str += "\nCidade: " + endereco.getCidade();
+        str += "\nEstado: " + endereco.getEstado();
+        str += "\nCEP: " + endereco.getCep();
+        return str;
     }
     
     public boolean validaCliente(){

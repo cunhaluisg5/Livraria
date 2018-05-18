@@ -259,13 +259,7 @@
               <Image iconType="3" name="/icones/icBuscarCliente.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[107, 41]"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="btBuscar" noResource="true"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[107, 41]"/>
-            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarActionPerformed"/>
@@ -426,7 +420,6 @@
                   <Image iconType="3" name="/icones/icConfirmarCliente.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="btConfirmar" noResource="true"/>
               </Properties>
               <Events>
@@ -525,7 +518,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="tfCodigoLivro">
               <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="tfCodigoLivro" noResource="true"/>
               </Properties>
             </Component>
@@ -538,7 +530,6 @@
                   <Image iconType="3" name="/icones/icBuscarItem.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar Item"/>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="btBuscarItem" noResource="true"/>
               </Properties>
               <Events>
@@ -603,7 +594,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfQuantidade">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="tfQuantidade" noResource="true"/>
           </Properties>
         </Component>
@@ -693,7 +683,6 @@
               <Image iconType="3" name="/icones/icRemoverItem.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Remover Item"/>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btRemoverItem" noResource="true"/>
           </Properties>
           <Events>
@@ -730,7 +719,6 @@
               <Image iconType="3" name="/icones/icFecharVenda.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fechar Venda"/>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[145, 57]"/>
             </Property>

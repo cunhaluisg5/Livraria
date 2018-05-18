@@ -6,6 +6,7 @@
 package forms;
 
 import java.awt.Component;
+import java.text.SimpleDateFormat;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -351,7 +352,8 @@ public class FormLivro extends javax.swing.JFrame {
             btCadastrar.setEnabled(false);;
             tfCodigo.setEnabled(false);
             tfCodigo.setText(Integer.toString(li.getCodigo()));
-            tfData.setText(li.getData());
+            SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+            tfData.setText(fm.format(li.getData()));
             tfQuantidade.setText(Integer.toString(li.getQuantidadeEstoque()));
             tfTitulo.setText(li.getTitulo());
             tfValor.setText(Float.toString(li.getValorUnitario()));
