@@ -89,6 +89,11 @@ public class FormNotaFiscal extends javax.swing.JFrame {
         btSair.setMaximumSize(new java.awt.Dimension(123, 41));
         btSair.setName("btSair"); // NOI18N
         btSair.setPreferredSize(new java.awt.Dimension(123, 41));
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,6 +159,10 @@ public class FormNotaFiscal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Informe um número!", "Atenção!", JOptionPane.ERROR_MESSAGE);
         }        
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     /**
      * @param args the command line arguments

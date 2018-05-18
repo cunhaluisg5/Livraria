@@ -206,6 +206,9 @@
               <Dimension value="[123, 41]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSairActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
