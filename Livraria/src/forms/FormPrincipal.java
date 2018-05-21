@@ -18,6 +18,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     public static ClienteDao bdcliente = null;
     public static LivroDao bdlivro = null;
     public static VendaDao bdvenda = null;
+    public static int numeroVenda = 1;
     
     public FormPrincipal() {
         bdcliente = new ClienteDao();

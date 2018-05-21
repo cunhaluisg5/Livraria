@@ -31,7 +31,6 @@ public class Item {
         String str = "";
         str += "\nTítulo do livro: " + livro.getTitulo();
         str += "\nValor unitário: " + livro.getValorUnitario();
-        str += "\nEm estoque: " + livro.getQuantidadeEstoque();
         str += "\nQuantidade: " + quantidade;
         str += "\nValor do item: " + valorItem;
         str += "\n###################################\n";

@@ -6,7 +6,6 @@
 package forms;
 
 import java.awt.Component;
-import java.text.SimpleDateFormat;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -152,6 +151,7 @@ public class FormLivro extends javax.swing.JFrame {
         lbCodigo.setText("Código:");
         lbCodigo.setName("lbCodigo"); // NOI18N
 
+        tfCodigo.setText("0");
         tfCodigo.setName("tfCodigo"); // NOI18N
 
         lbTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -171,6 +171,7 @@ public class FormLivro extends javax.swing.JFrame {
         lbValor.setText("Valor unitário:");
         lbValor.setName("lbValor"); // NOI18N
 
+        tfValor.setText("0");
         tfValor.setName("tfValor"); // NOI18N
         tfValor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -182,6 +183,7 @@ public class FormLivro extends javax.swing.JFrame {
         lbQuantidade.setText("Quantidade em estoque:");
         lbQuantidade.setName("lbQuantidade"); // NOI18N
 
+        tfQuantidade.setText("0");
         tfQuantidade.setName("tfQuantidade"); // NOI18N
         tfQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -352,8 +354,7 @@ public class FormLivro extends javax.swing.JFrame {
             btCadastrar.setEnabled(false);;
             tfCodigo.setEnabled(false);
             tfCodigo.setText(Integer.toString(li.getCodigo()));
-            SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
-            tfData.setText(fm.format(li.getData()));
+            tfData.setText(li.getData());
             tfQuantidade.setText(Integer.toString(li.getQuantidadeEstoque()));
             tfTitulo.setText(li.getTitulo());
             tfValor.setText(Float.toString(li.getValorUnitario()));

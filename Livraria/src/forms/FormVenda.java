@@ -536,7 +536,7 @@ public class FormVenda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        lbNumeroVenda.setText(Integer.toString(venda.getNumero()));
+        lbNumeroVenda.setText(Integer.toString(FormPrincipal.numeroVenda));
         SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
         String dt = fm.format(venda.getDataVenda());
         lbDataVenda.setText(dt);
@@ -590,13 +590,18 @@ public class FormVenda extends javax.swing.JFrame {
         try{
             int quantidade = Integer.parseInt(tfQuantidade.getText());
             if(quantidade != 0){
-                Item it = new Item(livro);
-                it.setQuantidade(quantidade);
-                it.calcularValorItem();
-                inserirTabela(livro, it);
-                venda.inserirItem(it);
-                soma = soma + it.getValorItem();
-                lbValorTotal.setText(Float.toString(soma));
+                if(quantidade <= livro.getQuantidadeEstoque()){
+                    Item it = new Item(livro);
+                    it.setQuantidade(quantidade);
+                    it.calcularValorItem();
+                    inserirTabela(livro, it);
+                    venda.inserirItem(it);
+                    soma = soma + it.getValorItem();
+                    lbValorTotal.setText(Float.toString(soma));
+                    livro.setQuantidadeEstoque(livro.getQuantidadeEstoque() - Integer.parseInt(tfQuantidade.getText()));
+                }else{
+                    JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                }                
             }else{
                 JOptionPane.showMessageDialog(null, "Favor preencher a quantidade!", "Atenção!", JOptionPane.ERROR_MESSAGE);
                 tfQuantidade.requestFocus();
@@ -610,8 +615,13 @@ public class FormVenda extends javax.swing.JFrame {
         if((cliente != null) && (venda.todosItens().size() > 0)){
             int op = JOptionPane.showConfirmDialog(null, "Deseja realmente fechar a venda?", "Processo de Venda", JOptionPane.YES_NO_OPTION);
             if(op == JOptionPane.YES_OPTION){
+                float res = venda.calcularValorTotal();
+                venda.setValorTotal(res);
+                venda.setNumero(FormPrincipal.numeroVenda);
                 FormPrincipal.bdvenda.adicionarVenda(venda);
                 JOptionPane.showMessageDialog(null, "Venda armazenada com sucesso!", "Atenção!", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.numeroVenda++;
+                lbNumeroVenda.setText(Integer.toString(FormPrincipal.numeroVenda));
                 this.btCancelarActionPerformed(evt);
             }
         }else if(cliente == null){
@@ -641,12 +651,10 @@ public class FormVenda extends javax.swing.JFrame {
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         venda = new Venda();
-        venda.setNumero(venda.getNumero()-1);
         btConfirmar.setEnabled(true);
         soma = 0;
         lbValorTotal.setText("R$ 0,00");
         limparTabela();
-        lbNumeroVenda.setText(Integer.toString(venda.getNumero()));
         SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
         String dt = fm.format(venda.getDataVenda());
         lbDataVenda.setText(dt);

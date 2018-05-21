@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,21 +15,19 @@ import java.util.List;
  * @author Luís Gustavo
  */
 public class Venda {
-    private static int numero = 0;
+    private int numero = 0;
     private Cliente cliente;
     private List<Item> lista;
     private float valorTotal;
     private Date dataVenda;
 
     public Venda() {
-        numero++;
         lista = new ArrayList<Item>();
         dataVenda = new Date();
     }
 
     public Venda(Cliente cliente) {
         this.cliente = cliente;
-        numero++;
         lista = new ArrayList<Item>();
         dataVenda = new Date();
     }
@@ -74,7 +73,9 @@ public class Venda {
         for(Item item : lista){
             str += item.toString();
         }
-        str += "\nData da Venda = "+ dataVenda;
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        String d = fm.format(dataVenda);
+        str += "\nData da Venda = "+ d;
         str += "\nValor Total = " + valorTotal;
         return str;
     }
@@ -84,7 +85,7 @@ public class Venda {
     }
 
     public void setNumero(int numero) {
-        Venda.numero = numero;
+        this.numero = numero;
     }
 
     public Cliente getCliente() {
