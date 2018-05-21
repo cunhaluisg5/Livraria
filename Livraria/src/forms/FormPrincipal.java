@@ -173,6 +173,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         JMenuVendas.setText("Vendas");
         JMenuVendas.setName("JMenuVendas"); // NOI18N
 
+        JMenuItemNovaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/novaVenda.png"))); // NOI18N
         JMenuItemNovaVenda.setText("Nova Venda");
         JMenuItemNovaVenda.setName("JMenuItemNovaVenda"); // NOI18N
         JMenuItemNovaVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +183,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         JMenuVendas.add(JMenuItemNovaVenda);
 
+        JMenuItemEmitirNF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/emitirNF.png"))); // NOI18N
         JMenuItemEmitirNF.setText("Emitir N.F.");
         JMenuItemEmitirNF.setName("JMenuItemEmitirNF"); // NOI18N
         JMenuItemEmitirNF.addActionListener(new java.awt.event.ActionListener() {
@@ -196,11 +198,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         JMenuSuporte.setText("Suporte");
         JMenuSuporte.setName("JMenuSuporte"); // NOI18N
 
+        JMenuItemAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/ajuda.png"))); // NOI18N
         JMenuItemAjuda.setText("Ajuda");
         JMenuItemAjuda.setName("JMenuItemAjuda"); // NOI18N
         JMenuSuporte.add(JMenuItemAjuda);
         JMenuSuporte.add(jSeparator2);
 
+        JMenuItemSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sobre.png"))); // NOI18N
         JMenuItemSobre.setText("Sobre");
         JMenuItemSobre.setName("JMenuItemSobre"); // NOI18N
         JMenuSuporte.add(JMenuItemSobre);

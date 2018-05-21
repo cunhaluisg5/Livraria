@@ -130,6 +130,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemNovaVenda">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icones/novaVenda.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nova Venda"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemNovaVenda" noResource="true"/>
               </Properties>
@@ -139,6 +142,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemEmitirNF">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icones/emitirNF.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Emitir N.F."/>
                 <Property name="name" type="java.lang.String" value="JMenuItemEmitirNF" noResource="true"/>
               </Properties>
@@ -156,6 +162,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemAjuda">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icones/ajuda.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ajuda"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemAjuda" noResource="true"/>
               </Properties>
@@ -164,6 +173,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemSobre">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icones/sobre.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemSobre" noResource="true"/>
               </Properties>
